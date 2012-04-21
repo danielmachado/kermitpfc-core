@@ -1,0 +1,12 @@
+source 'http://rubygems.org'
+
+gem 'bundler'
+gem 'rake'
+gem 'em-http-request', "0.2.7", :require => 'em-http'
+gem 'em-websocket'
+gem 'redis'
+gem 'json'
+gem 'yaml'
+gem 'twitter-stream'
+gem 'airbrake'
+gem 'rspec'
