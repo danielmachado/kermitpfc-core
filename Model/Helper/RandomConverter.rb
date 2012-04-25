@@ -1,3 +1,4 @@
+require_relative "./Converter"
 class RandomConverter < Converter
 
 	#Retrieves all statuses that were saved in Redis

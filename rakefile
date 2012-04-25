@@ -1,0 +1,32 @@
+
+
+task :default => [:twitter_adapter]
+
+desc "Converts tweets into messages catching its from redis"
+task :twitter_converter do
+
+
+
+end
+
+desc "Converts random phrases into messages"
+task :random_converter do
+
+end
+
+desc "Retrieves random phrases from a RPG"
+task :random_adapter do
+
+end
+
+desc "Retrieves tweets from the Twitter Streaming API"
+task :twitter_adapter
+	
+
+
+end
+
+desc "Test the entire whole application"
+task :test
+
+end

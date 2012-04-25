@@ -1,6 +1,6 @@
 #Self implementation from Adapter class to make it works with Twitter Streaming API
 require 'rubygems'
-require './Adapter'
+require_relative "./Adapter"
 require 'redis'
 require 'json'
 require 'twitter/json_stream'
@@ -10,7 +10,7 @@ class TwitterAdapter < Adapter
 
 	def initialize
 
-		@config = YAML::load( File.open( '../../config.yml' ) )
+		@config = YAML::load( File.open( 'config.yml' ) )
 		puts 'config loaded OK'
 
 	end

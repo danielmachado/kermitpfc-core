@@ -1,15 +1,15 @@
-require './Converter'
-require '../Twitter/Message'
-require '../Twitter/Contributor'
-require '../Twitter/Entity'
-require '../Twitter/Geo'
-require '../Twitter/HashTag'
-require '../Twitter/Media'
-require '../Twitter/Place'
-require '../Twitter/Size'
-require '../Twitter/URL'
-require '../Twitter/User'
-require '../Twitter/UserMention'
+require_relative './Converter'
+require_relative '../Message/Message'
+require_relative '../Message/Contributor'
+require_relative '../Message/Entity'
+require_relative '../Message/Geo'
+require_relative '../Message/HashTag'
+require_relative '../Message/Media'
+require_relative '../Message/Place'
+require_relative '../Message/Size'
+require_relative '../Message/URL'
+require_relative '../Message/User'
+require_relative '../Message/UserMention'
 require 'redis'
 require 'json'
 require 'yaml'
@@ -18,10 +18,9 @@ class TwitterConverter < Converter
 
 	def initialize
 
-		@config = YAML::load( File.open( '../../config.yml' ) )
+		@config = YAML::load( File.open( '../config.yml' ) )
 		puts 'config loaded OK'
 		connect_database
-		from_redis
 
 	end
 
@@ -53,8 +52,8 @@ class TwitterConverter < Converter
 
 		status = JSON.parse(status)
 		if status.has_key? 'Error'
-      	raise "status malformed"
-   	end
+      		raise "status malformed"
+   		end
 
 		message.text = status["text"]
 		message.retweet_count = status["retweet_count"]
@@ -243,7 +242,7 @@ class TwitterConverter < Converter
 			message.entities = entity	
 		end
 
-		puts message
+		message
 		
 	end	
 
