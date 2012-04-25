@@ -1,7 +1,7 @@
 #Self implementation from Adapter class to make it works with a Random Phrase Generator
 require 'rubygems'
-require '../RandomPhraseGenerator'
-require './Adapter'
+require_relative "../RandomPhraseGenerator"
+require_relative "./Adapter"
 require 'redis'
 require 'yaml'
 

@@ -1,9 +1,10 @@
-require "../Twitter/Geo"
-require "../Twitter/Entity"
-require "../Twitter/Media"
-require "../Twitter/Place"
-require "../Twitter/User"
-require "../Twitter/Contributor"
+require_relative "./Geo"
+require_relative "./Entity"
+require_relative "./Media"
+require_relative "./Place"
+require_relative "./User"
+require_relative "./Contributor"
+
 class Message
 
 	attr_accessor :geo, :text, :possibly_sensitive_editable, :user, :id, :created_at,
