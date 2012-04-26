@@ -18,7 +18,7 @@ class TwitterConverter < Converter
 
 	def initialize
 
-		@config = YAML::load( File.open( '../config.yml' ) )
+		@config = YAML::load( File.open( 'config.yml' ) )
 		puts 'config loaded OK'
 		connect_database
 

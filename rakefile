@@ -1,32 +1,63 @@
-
+require_relative './Model/Helper/TwitterAdapter'
+require_relative './Model/Helper/TwitterConverter'
+require_relative './Model/Helper/RandomConverter'
+require_relative './Model/Helper/RandomAdapter'
+require_relative './Model/Helper/Publisher'
+require_relative './Model/Helper/Atomizer'
 
 task :default => [:twitter_adapter]
 
-desc "Converts tweets into messages catching its from redis"
+desc "Converts tweets into messages whose are catched from redis, then they're converted into Atom and finally they're delivered"
 task :twitter_converter do
 
+	tc = TwitterConverter.new
+	message = tc.from_redis
 
+	a = Atomizer.new
+	atom = a.to_atom message
+	
+	p = Publisher.new
+	p.publish atom
+
+end
+
+desc "Retrieves tweets from the Twitter Streaming API"
+task :twitter_adapter do
+	
+	ta = TwitterAdapter.new
+	ta.connect_database
+	ta.connect_stream
 
 end
 
 desc "Converts random phrases into messages"
 task :random_converter do
 
+	rc = RandomConverter.new
+	message = rc.from_redis
+	
+	a = Atomizer.new
+	atom = a.to_atom message
+	
+	p = Publisher.new
+	p.publish atom
+
 end
 
 desc "Retrieves random phrases from a RPG"
 task :random_adapter do
 
-end
-
-desc "Retrieves tweets from the Twitter Streaming API"
-task :twitter_adapter
-	
-
+	ra = RandomAdapter.new
+	ra.connect_database
+	ra.connect_stream
 
 end
 
-desc "Test the entire whole application"
-task :test
 
-end
+
+# desc "Test the entire whole application"
+# task :test do
+
+
+
+# end
