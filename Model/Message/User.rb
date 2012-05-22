@@ -1,5 +1,5 @@
 class User
-	attr_accessor :id, :screen_name, :name, :description, :url, :location, :profile_background_color, 
+	attr_accessor :screen_name, :name, :description, :url, :location, :profile_background_color, 
 	:profile_background_image_url, :profile_background_tile, :profile_image_url, :profile_link_color,
 	:profile_sidebar_border_color, :profile_sidebar_fill_color, :profile_text_color, :created_at,
 	:contributors_enabled, :favourites_count, :statuses_count, :friends_count, :time_zone, :utc_offset,

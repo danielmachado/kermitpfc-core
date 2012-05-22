@@ -1,6 +1,6 @@
 class Media
 		attr_accessor :type, :expanded_url, :large, :medium, :small, :thumb,
-		:indices, :url, :media_url_https, :media_url, :display_url, :id, :id_str
+		:indices, :url, :media_url_https, :media_url, :display_url, :id_str
 
 		def to_s
 			res = "\n\t type: " + type.to_s + "\n\t expanded_url: " + expanded_url.to_s + "\n\t LARGE: " + large.to_s
