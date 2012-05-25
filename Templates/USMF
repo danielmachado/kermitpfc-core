@@ -1,0 +1,56 @@
+{
+    "service" : "",           # Service Name.
+    "user" : {                # User Info 
+        "name" : "",              # User Name
+        "real_name" : ""          # Real name of user
+        "id" : "",                # Unique User ID
+        "language": "",           # Spoken language of user
+        "utc" : "",               # UTC time offset of user
+        "geo" : "",               # Latitude/Logitude User location
+        "description" : ""        # User profile description
+        "avatar" : "",            # Direct href to avatar image
+        "location": "",           # Plain Language User location
+        "subscribers": "",        # Number of subscribers
+        "subscriptions": "",      # Number of subscriptions
+        "postings": "",           # Number of postings made
+        "profile": "",            # Href to user profile
+        "website": "",            # Href to user website
+    }
+    "to_users" {              # Attached link(s)
+       "0": {                     # Index of link
+          "name" : "",                # User Name
+          "id" : "",                  # Unique User ID
+          "service"                   # Name of service/Domain hosting link 
+          "title" : "",               # Title of item
+          "thumbnail" : "",           # Direct href to thumbnail for item
+          "href" : "",                # Direct href to item
+       },
+    },       
+    "links" {                 # Attached link(s)
+       "0": {                     # Index of link
+          "service"                   # Name of service/Domain hosting link 
+          "title" : "",               # Title of item
+          "thumbnail" : "",           # Direct href to thumbnail for item
+          "href" : "",                # Direct href to item
+       },
+    },       
+    "id" : "",                # Unique ID
+    "geo" : "",               # Latitude/Logitude content creation location
+    "application" : "",       # Application used to create this posting
+    "location" : "",          # Plain Language content creation location
+    "date" : "",              # Date posted
+    "source" : "",            # User friendly link to content
+    "text" : "",              # Microblog text / Video Title / Etc
+    "description" : "",       # Full post text / Decription 
+    "keywords" : "",          # Related Keywords
+    "category" : "",          # Category of content
+    "duration" : "",          # Duration of content (if video)
+    "likes" : "",             # Number of users who "liked" this
+    "dislikes" : "",          # Number of users who "disliked" this
+    "favorites": "",          # Number of users who "favorited" this
+    "comments": "",           # Number of users who "commented" this
+    "rates": "",              # Number of users who "rated" this
+    "rating": "",             # Average "rating" of content
+    "min_rating": "",         # Minimum "rating" of content
+    "max_rating": "",         # Maximum "rating" of content
+}
