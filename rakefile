@@ -1,9 +1,9 @@
-require_relative './Model/Helper/TwitterAdapter'
-require_relative './Model/Helper/TwitterConverter'
-require_relative './Model/Helper/RandomConverter'
-require_relative './Model/Helper/RandomAdapter'
-require_relative './Model/Helper/Publisher'
-require_relative './Model/Helper/Atomizer'
+require_relative './model/helper/TwitterAdapter'
+require_relative './model/helper/TwitterConverter'
+require_relative './model/helper/RandomConverter'
+require_relative './model/helper/RandomAdapter'
+require_relative './model/helper/Publisher'
+require_relative './model/helper/Atomizer'
 
 task :default => [:twitter_adapter]
 

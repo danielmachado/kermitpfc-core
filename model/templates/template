@@ -7,7 +7,7 @@
         "id" : "id_str",                # Unique User ID
         "language": "lang",           # Spoken language of user
         "utc" : "time_zone + utc_offset",               # UTC time offset of user
-  --->  "geo" : "",               # Latitude/Logitude User location
+        "geo" : "place",               # Latitude/Logitude User location
         "description" : "description"        # User profile description
         "avatar" : "profile_image_url_https",            # Direct href to avatar image
         "location": "location",           # Plain Language User location
@@ -22,8 +22,8 @@
           "name" : "screen_name",                # User Name
           "id" : "id_str",                  # Unique User ID
           "twitter/instagram/..."                   # Name of service/Domain hosting link 
-          "title" : "mention/reply/retweet",               # Title of item
-          "thumbnail" : "?",           # Direct href to thumbnail for item
+          "title" : "in_reply_to_status_id_str",               # Title of item
+          "thumbnail" : "mention/reply/retweet",           # Direct href to thumbnail for item
           "href" : "http://www.service.com/name",                # Direct href to item
        },
     },       
@@ -47,24 +47,4 @@
     "likes" : "retweet_count",             # Number of users who "liked" this
     "dislikes" : "",          # Number of users who "disliked" this
     "favorites": "favourites_count",          # Number of users who "favorited" this
-}
-//Campos útiles que no se han parseado
-{"truncated":false,
-"place":{
-  "place_type":"city",
-  "bounding_box":{
-    "type":"Polygon",
-    "coordinates":[[[-6.0201004,43.2788671],[-5.7423683,43.2788671],[-5.7423683,43.4274282],[-6.0201004,43.4274282]]]},
-  "url":"http:\/\/api.twitter.com\/1\/geo\/id\/d1272bba8714df3d.json",
-  "country_code":"ES",
-  "attributes":{},
-  "name":"Oviedo",
-  "id":"d1272bba8714df3d"},
-"user":{
-  "listed_count":0,
-  "created_at":"Sun Oct 30 14:00:12 +0000 2011",
-  "verified":false,
-  "is_translator":false,
-  "geo_enabled":true,
-  "protected":false,},
 }

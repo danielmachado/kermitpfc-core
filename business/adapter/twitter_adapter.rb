@@ -31,8 +31,6 @@ class TwitterAdapter < Adapter
 	def connect_stream
 		EventMachine::run {
 
-			
-
 			stream = Twitter::JSONStream.connect(
 			   	:path    => "/1/statuses/filter.json?track=#{@config["twitter"]["track"]}",
 		    	:auth    => "#{@config["twitter"]["login"]}:#{@config["twitter"]["pass"]}",

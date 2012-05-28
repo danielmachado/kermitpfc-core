@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+
+     <title>KermitPFC-Core</title>
+     <link href="https:\/\/github.com\/danielmachado\/kermitpfc-core"/>
+     <updated>to-date</updated>
+     <author>
+       <name>KermitPFC</name>
+     </author>
+     <id>¿id del stream que servimos?(p.ej)</id>
+
+     <entry>
+       <title></title> <!-- título para cada message que enviemos.. -->
+       <link href="http://www.twitter.com/id_str"/>
+       <id>id_str</id>
+       <updated>created_at</updated>
+       <summary>
+        text
+       </summary>
+       {
+          "service" : "Twitter",           # Service Name.
+          "user" : {                # User Info 
+              "name" : "screen_name",              # User Name
+              "real_name" : "name"          # Real name of user
+              "id" : "id_str",                # Unique User ID
+              "language": "lang",           # Spoken language of user
+              "utc" : "time_zone + utc_offset",               # UTC time offset of user
+              "geo" : "",               # Latitude/Logitude User location
+              "description" : "description"        # User profile description
+              "avatar" : "profile_image_url_https",            # Direct href to avatar image
+              "location": "location",           # Plain Language User location
+              "subscribers": "followers_count",        # Number of subscribers
+              "subscriptions": "friends_count",      # Number of subscriptions
+              "postings": "statuses_count",           # Number of postings made
+              "profile": "http://www.twitter.com/name",            # Href to user profile
+              "website": "url",            # Href to user website
+          }
+          "to_users" {              # Attached link(s) // // Tantos como UserMentions tenga entities 0...N
+             "0": {                     # Index of link
+                "name" : "screen_name",                # User Name
+                "id" : "id_str",                  # Unique User ID
+                "twitter/instagram/..."                   # Name of service/Domain hosting link 
+                "title" : "mention/reply/retweet",               # Title of item
+                "thumbnail" : "?",           # Direct href to thumbnail for item
+                "href" : "http://www.service.com/name",                # Direct href to item
+             },
+          },       
+          "links" {                 # Attached link(s) //Media del status
+             "0": {                     # Index of link // Tantos como entities se necesiten 0...N
+                "instagram/lockerz/youtube/..."                   # Name of service/Domain hosting link 
+                "photo/video/url.." : "",               # Title of item
+                "thumbnail" : "url",           # Direct href to thumbnail for item
+                "href" : "media_url",                # Direct href to item
+             },
+          },       
+          "id" : "id_str",                # Unique ID
+          "geo" : "coordinates",               # Latitude/Logitude content creation location
+          "application" : "source",       # Application used to create this posting
+          "location" : "full_name+country",          # Plain Language content creation location
+          "date" : "created_at",              # Date posted
+          "source" : "http://www.twitter.com/id_str",            # User friendly link to content
+          "text" : "text",              # Microblog text / Video Title / Etc
+          "description" : "",       # Full post text / Decription 
+          "keywords" : "hashtags",          # Related Keywords
+          "likes" : "retweet_count",             # Number of users who "liked" this
+          "dislikes" : "",          # Number of users who "disliked" this
+          "favorites": "favourites_count",          # Number of users who "favorited" this
+        }
+       <georss:polygon>coordinates</georss:polygon>
+       <georss:featureTypeTag>place_type</georss:featureTypeTag>
+       <georss:featureName>name</georss:featureName>
+     </entry>
+     <!-- tantos entry como tweets se envíen -->
+   </feed>

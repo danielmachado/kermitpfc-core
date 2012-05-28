@@ -1,6 +1,6 @@
 class Place
-	attr_accessor :id, :url, :name, :full_name,
-	:place_type, :country_code, :country, :bounding_box, :atributes
+	attr_accessor :name, :full_name,
+	:place_type, :country, :bounding_box, :atributes
 
 	#bounding_box is a Geo
 
