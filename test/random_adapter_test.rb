@@ -1,4 +1,4 @@
-require_relative '../Model/Helper/RandomAdapter'
+require_relative '../model/helper/RandomAdapter'
 class RandomAdapterTest
 
 	def initialize

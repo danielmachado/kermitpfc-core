@@ -10,9 +10,9 @@ class Publisher
 
 	end
 
-	def publish atom
+	def publish usmf
 
-		@redis.publish 'ws', atom
+		@redis.publish 'ws', usmf
 
 	end
 
