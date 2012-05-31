@@ -1,4 +1,4 @@
-require_relative '../Model/Helper/TwitterAdapter'
+require_relative '../model/helper/twitter_adapter'
 class TwitterAdapterTest
 
 	def initialize

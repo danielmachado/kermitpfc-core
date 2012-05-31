@@ -1,30 +1,16 @@
 #Self implementation from Adapter class to make it works with a Random Phrase Generator
-require 'rubygems'
-require_relative "../RandomPhraseGenerator"
-require_relative "./Adapter"
-require 'redis'
-require 'yaml'
+
+require_relative "../random_phrase_generator"
+require_relative "./adapter"
 
 class RandomAdapter < Adapter
 
+	:dao
+
 	def initialize
 
-		@config = YAML::load( File.open( 'config.yml' ) )
-		puts 'config loaded OK'
+		@dao = DAO.new 'random'
 
-	end	
-
-	def connect_database
-
-		@db = Redis.new
-		puts 'New instance for Redis'
-		@db = Redis.connect(
-			:db   => "Random",
-			:host => "#{@config["redis"]["host"]}",
-			:port => @config["redis"]["port"]
-		)
-		puts "Redis connect OK"
-		@db
 	end
 
 	def connect_stream
@@ -32,16 +18,9 @@ class RandomAdapter < Adapter
 		random = RandomPhraseGenerator.new
 
 		while true
-			to_redis(random.generate)
+			@dao.save_status random.generate
 			puts "retrieving..."
 		end
-	end
-
-	def to_redis status
-
-		@db.rpush 'random', status
-		puts "Random phrase saved"
-
 	end
 
 end

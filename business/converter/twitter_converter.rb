@@ -1,45 +1,17 @@
-require_relative './Converter'
-require_relative '../../model/message/Message'
-require_relative '../../model/message/Entity'
-require_relative '../../model/message/Geo'
-require_relative '../../model/message/Hashtag'
-require_relative '../../model/message/Media'
-require_relative '../../model/message/Place'
+require_relative './converter'
+require_relative '../../model/message/message'
+require_relative '../../model/message/entity'
+require_relative '../../model/message/geo'
+require_relative '../../model/message/hashtag'
+require_relative '../../model/message/media'
+require_relative '../../model/message/place'
 require_relative '../../model/message/URL'
-require_relative '../../model/message/User'
-require_relative '../../model/message/UserMention'
-require 'redis'
+require_relative '../../model/message/user'
+require_relative '../../model/message/user_mention'
+
 require 'json'
-require 'yaml'
 
 class TwitterConverter < Converter
-
-	def initialize
-
-		@config = YAML::load( File.open( 'config.yml' ) )
-		puts 'config loaded OK'
-		connect_database
-
-	end
-
-	def connect_database
-
-		@db = Redis.new
-		puts 'New instance for Redis'
-		@db = Redis.connect(
-			:db   => "Twitter",
-			:host => "#{@config["redis"]["host"]}",
-			:port => @config["redis"]["port"]
-		)
-		puts "Redis connect OK"
-	end
-
-	#Retrieves all statuses that were saved in Redis
-	def from_redis
-		status = @db.rpop 'tweets'
-		to_message(status)
-
-	end
 
 	#Parses a status into a Message
 	def to_message status
@@ -55,7 +27,7 @@ class TwitterConverter < Converter
 
 		message.text = status["text"]
 		message.retweet_count = status["retweet_count"]
-		message.in_reply_to_status_id_str = status["in_reply_to_status_id_str"]
+		message.in_reply_to_user_id_str = status["in_reply_to_user_id_str"]
 		message.created_at = status["created_at"]
 		message.id_str = status["id_str"]
 		message.favorited = status["favorited"]
@@ -146,7 +118,8 @@ class TwitterConverter < Converter
 				x.each do |item|
 					media = Media.new
 					media.type = item["type"]
-					media.expanded_url = item["url"]
+					media.url = item["url"]
+					media.media_url = item["media_url"]
 					
 					entity.media << media
 				end
