@@ -1,63 +1,68 @@
-require_relative './model/helper/TwitterAdapter'
-require_relative './model/helper/TwitterConverter'
-require_relative './model/helper/RandomConverter'
-require_relative './model/helper/RandomAdapter'
-require_relative './model/helper/Publisher'
-require_relative './model/helper/Atomizer'
+require_relative './business/adapter/twitter_adapter'
+require_relative './business/converter/twitter_converter'
+require_relative './business/converter/random_converter'
+require_relative './business/adapter/random_adapter'
+require_relative './helper/DAO'
+require_relative './helper/websocket_server'
+require_relative './business/USMF_parser'
 
-task :default => [:twitter_adapter]
+task :default => [:initialize_websocket_server]
 
-desc "Converts tweets into messages whose are catched from redis, then they're converted into Atom and finally they're delivered"
-task :twitter_converter do
+desc "Starts the WebSocket server"
+task :initialize_websocket_server do
 
-	tc = TwitterConverter.new
-	message = tc.from_redis
-
-	a = Atomizer.new
-	atom = a.to_atom message
-	
-	p = Publisher.new
-	p.publish atom
+	ws = WebSocketServer.new
+	ws.start
 
 end
+
 
 desc "Retrieves tweets from the Twitter Streaming API"
 task :twitter_adapter do
 	
 	ta = TwitterAdapter.new
-	ta.connect_database
 	ta.connect_stream
-
-end
-
-desc "Converts random phrases into messages"
-task :random_converter do
-
-	rc = RandomConverter.new
-	message = rc.from_redis
 	
-	a = Atomizer.new
-	atom = a.to_atom message
-	
-	p = Publisher.new
-	p.publish atom
-
 end
 
 desc "Retrieves random phrases from a RPG"
 task :random_adapter do
 
 	ra = RandomAdapter.new
-	ra.connect_database
 	ra.connect_stream
 
 end
 
+desc "Converts tweets into messages whose are catched from redis, then they're converted into Atom and finally they're delivered"
+task :twitter_converter do
 
+	dao = DAO.new 'twitter'
 
-# desc "Test the entire whole application"
-# task :test do
+	status = dao.get_status
 
+	tc = TwitterConverter.new
+	message = tc.to_message status
 
+	uc = USMFParser.new
+	usmf = uc.to_usmf(message,'Twitter')
 
-# end
+	dao.publish usmf
+	puts 'Publishing'
+end
+
+desc "Converts random phrases into messages"
+task :random_converter do
+
+	dao = DAO.new 'random'
+
+	status = dao.get_status
+
+	rc = RandomConverter.new
+	message = rc.to_message status
+	
+	uc = USMFParser.new
+	usmf = uc.to_usmf(message,'Random')
+	
+	dao.publish usmf
+
+end

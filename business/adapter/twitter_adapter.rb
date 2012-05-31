@@ -1,6 +1,6 @@
 #Self implementation from Adapter class to make it works with Twitter Streaming API
 require 'rubygems'
-require_relative "./Adapter"
+require_relative "./adapter"
 require 'redis'
 require 'json'
 require 'twitter/json_stream'
@@ -8,39 +8,27 @@ require 'yaml'
 
 class TwitterAdapter < Adapter
 
+	:dao
+	
 	def initialize
 
-		@config = YAML::load( File.open( 'config.yml' ) )
-		puts 'config loaded OK'
+		@dao = DAO.new 'twitter'
 
-	end
-
-	def connect_database
-
-		@db = Redis.new
-		puts 'New instance for Redis'
-		@db = Redis.connect(
-			:db   => "Twitter",
-			:host => "#{@config["redis"]["host"]}",
-			:port => @config["redis"]["port"]
-		)
-		puts "Redis connect OK"
-		@db
 	end
 
 	def connect_stream
 		EventMachine::run {
 
 			stream = Twitter::JSONStream.connect(
-			   	:path    => "/1/statuses/filter.json?track=#{@config["twitter"]["track"]}",
-		    	:auth    => "#{@config["twitter"]["login"]}:#{@config["twitter"]["pass"]}",
+			   	:path    => "/1/statuses/filter.json?track=#{@dao.config["twitter"]["track"]}",
+		    	:auth    => "#{@dao.config["twitter"]["login"]}:#{@dao.config["twitter"]["pass"]}",
 		    	:ssl     => true,
-		    	:port    => @config["twitter"]["port"]
+		    	:port    => @dao.config["twitter"]["port"]
 		  	)
 
 		  	stream.each_item do |status|
 
-		  		to_redis(status)
+		  		@dao.save_status status
 				puts "retrieving..."
 		  		
 		  	end
@@ -61,13 +49,6 @@ class TwitterAdapter < Adapter
 		    	stream.stop
 		  	}
 		}
-	end
-
-	def to_redis status
-
-		@db.rpush 'tweets', status
-		puts "Tweet saved"
-
 	end
 
 end

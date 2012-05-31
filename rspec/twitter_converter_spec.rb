@@ -1,5 +1,5 @@
 # twitter_converter_spec.rb
-require_relative '../business/converter/TwitterConverter'
+require_relative '../business/converter/twitter_converter'
 
 describe TwitterConverter, "#to_message" do
   it "returns a message that should be equals to the test_message" do
