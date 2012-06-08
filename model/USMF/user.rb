@@ -8,4 +8,24 @@ class User
 		res
 	end
 
+	def to_hash
+		res = {
+			"name" => name,
+			"real_name" => real_name,
+			"id" => id,
+			"language" => language,
+			"utc" => utc,
+			"geo" => geo,
+			"description" => description,
+			"avatar" => avatar,
+			"location" => location,
+			"subscribers" => subscribers,
+			"subscriptions" => subscriptions,
+			"postings" => postings,
+			"profile" => profile,
+			"website" => website
+		}
+		res
+	end
+
 end

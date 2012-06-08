@@ -1,10 +1,7 @@
 #Self implementation from Adapter class to make it works with Twitter Streaming API
-require 'rubygems'
 require_relative "./adapter"
-require 'redis'
 require 'json'
 require 'twitter/json_stream'
-require 'yaml'
 
 class TwitterAdapter < Adapter
 

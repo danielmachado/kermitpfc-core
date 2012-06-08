@@ -1,12 +1,10 @@
 require_relative "./converter"
 class RandomConverter < Converter
 
-	#Parses a status into a Message
-	def to_message status
+	#Parses a status into a USMF
+	def to_usmf status
 
-		#empty body
-		
-		return message;
-	end	
+		usmf
+	end
 
 end

@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'redis'
 require 'em-websocket'
 
