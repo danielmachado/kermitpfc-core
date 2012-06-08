@@ -7,4 +7,13 @@ class Link
 		res
 	end
 
+	def to_hash
+		res = {  "service" => service,
+				"title" => title,
+				"thumbnail" => thumbnail,
+				"href" => href
+			}
+		res
+	end
+
 end

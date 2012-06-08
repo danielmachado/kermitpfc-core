@@ -1,134 +1,150 @@
 require_relative './converter'
-require_relative '../../model/message/message'
-require_relative '../../model/message/entity'
-require_relative '../../model/message/geo'
-require_relative '../../model/message/hashtag'
-require_relative '../../model/message/media'
-require_relative '../../model/message/place'
-require_relative '../../model/message/URL'
-require_relative '../../model/message/user'
-require_relative '../../model/message/user_mention'
+require_relative '../../model/USMF/USMF'
+require_relative '../../model/USMF/link'
+require_relative '../../model/USMF/to_user'
+require_relative '../../model/USMF/user'
 
 require 'json'
 
 class TwitterConverter < Converter
 
-	#Parses a status into a Message
-	def to_message status
+	def to_usmf status
 
-		message = Message.new
-		
+		usmf = USMF.new
 		user = User.new
 
 		status = JSON.parse(status)
 		if status.has_key? 'Error'
-      		raise "status malformed"
-   		end
+			raise "status malformed"
+		end
 
-		message.text = status["text"]
-		message.retweet_count = status["retweet_count"]
-		message.in_reply_to_user_id_str = status["in_reply_to_user_id_str"]
-		message.created_at = status["created_at"]
-		message.id_str = status["id_str"]
-		message.favorited = status["favorited"]
-		message.source = status["source"]
-		message.retweeted = status["retweeted"]
+		#Retrieving a status from Twitter
+		usmf.service = "Twitter"
+		usmf.id = status["id_str"]
+		
 
 		x = status["coordinates"]
 		unless x==nil
-			geo = Geo.new
-			geo.type = x["type"]
-			geo.coordinates = x["coordinates"]
-			message.coordinates = geo
+			usmf.geo = x["coordinates"]
 		end
+		
+		usmf.application = status["source"]
+		
 
 		x = status["place"]
 		unless x == nil
-			place = Place.new
-			place.place_type = x["place_type"]
-			place.country = x["country"]
-			place.url = x["url"]
-			place.country_code = x["country_code"]
-			place.full_name = x["full_name"]
-			place.name = x["name"]
-			place.id = x["id"]
-			place.attributes = x["attributes"]
-			b = Geo.new
-			x = x["bounding_box"]
-			b.type = x["type"]
-			b.coordinates = x["coordinates"]
-			place.bounding_box = b
-			message.place = place
+			usmf.location = x["full_name"] + " , " + x["country"]
 		end
 
+		usmf.date = status["created_at"]
+		usmf.text = status["text"]
+		usmf.description = status["in_reply_to_status_id_str"]
+		usmf.likes = status["retweet_count"]
+		usmf.dislikes = nil
+
+		#Retrieving user
 		x = status["user"]
-		user.time_zone = x["time_zone"]
-		user.url = x["url"]
-		user.description = x["description"]
-		user.profile_image_url_https = x["profile_image_url_https"]
-		user.followers_count = x["followers_count"]
-		user.location = x["location"]
-		user.lang = x["lang"]
-		user.screen_name = x["screen_name"]
-		user.friends_count = x["friends_count"]
-		user.name = x["name"]
-		user.statuses_count = x["statuses_count"]
-		user.favourites_count = x["favourites_count"]
-		user.id_str = x["id_str"]
-		user.utc_offset = x["utc_offset"]
-		message.user = user
+		unless x == nil
+			user.name = x["screen_name"]
+			user.real_name = x["name"]
+			user.id = x["id_str"]
+			user.language = x["lang"]
+			user.utc = x["time_zone"].to_s + " + " + x["utc_offset"].to_s
+			user.geo = nil
+			user.description = x["description"]
+			user.avatar = x["profile_image_url_https"]
+			user.location = x["location"]
+			user.subscribers = x["followers_count"]
+			user.subscriptions = x["friends_count"]
+			user.postings = x["statuses_count"]
+			user.profile = "https://twitter.com/#!/#{user.name}"
+			user.website = x["url"]
+
+			usmf.user = user
+			usmf.source = "https://twitter.com/#{usmf.user.name}/status/#{usmf.id}"
+		end
+		
+
+		usmf.to_users = []
+		usmf.links = []
+
+		#Retrieving entities
 
 		entities = status["entities"]
 		unless entities == nil
-			entity = Entity.new
+		
+		#Retrieving URLs
+
 			x = entities["urls"]
 			unless x == nil
-				entity.urls = []
 				x.each do |item|
-					url = URL.new
-					url.url = item["url"]
+					l = Link.new
+					l.title = nil
+					l.service = nil
+					l.thumbnail = nil
+					l.href = item["url"]
 					
-					entity.urls << url
+					usmf.links << l
 				end
 			end
-			x = entities["hashtags"]
-			unless x == nil
-				entity.hashtags = []
-				x.each do |item|
-					ht = Hashtag.new
-					ht.text = item["text"]
 
-					entity.hashtags << ht
-				end
-			end
-			x = entities["user_mentions"]
-			unless x == nil
-				entity.user_mentions = []
-				x.each do |item|
-					mentions = UserMention.new
-					mentions.screen_name = item["screen_name"]
-					mentions.id_str = item["id_str"]
+		#Retrieving all media content
 
-					entity.user_mentions << mentions
-				end
-			end
 			x = entities["media"]
 			unless x == nil
-				entity.media = []
 				x.each do |item|
-					media = Media.new
-					media.type = item["type"]
-					media.url = item["url"]
-					media.media_url = item["media_url"]
+					l = Link.new
+					l.title = item["type"]
+					l.service = nil
+					l.thumbnail = item["media_url"]
+					l.href = item["url"]
 					
-					entity.media << media
+					usmf.links << l
 				end
 			end
-			message.entities = entity	
+
+			#Retrieving hashtags
+
+			x = entities["hashtags"]
+			unless x == nil
+
+				usmf.keywords = ""
+				x.each do |h| 
+
+					usmf.keywords += h["text"] + ", "
+
+				end
+
+			end
+
+			#Retrieving mentions
+
+			x = entities["user_mentions"]
+			unless x == nil
+				x.each do |item|
+					tu = ToUser.new
+
+					tu.name = item["screen_name"]
+					tu.id = item["id_str"]
+
+					if item["id_str"] == status["in_reply_to_user_id_str"]
+						tu.service = "reply"
+					else
+						tu.service = "mention"
+					end
+					unless status["in_reply_to_status_id_str"] == nil
+						tu.title = status["in_reply_to_status_id_str"]
+						tu.href = "https://twitter.com/#{usmf.user.name}/status/#{usmf.id}"
+					end
+
+					usmf.to_users << tu
+				end
+			end
+
 		end
 
-		message
-		
-	end	
+		usmf
+
+	end
 
 end

@@ -4,7 +4,7 @@ require_relative './business/converter/random_converter'
 require_relative './business/adapter/random_adapter'
 require_relative './helper/DAO'
 require_relative './helper/websocket_server'
-require_relative './business/USMF_parser'
+require 'json'
 
 task :default => [:initialize_websocket_server]
 
@@ -39,15 +39,20 @@ task :twitter_converter do
 	dao = DAO.new 'twitter'
 
 	status = dao.get_status
+	puts 'Status retrieved'
 
-	tc = TwitterConverter.new
-	message = tc.to_message status
+	while status != nil
+		
+		tc = TwitterConverter.new
+		usmf = tc.to_usmf status
 
-	uc = USMFParser.new
-	usmf = uc.to_usmf(message,'Twitter')
+		dao.publish usmf.to_hash.to_json
+		puts 'Publishing'
+		status = dao.get_status
 
-	dao.publish usmf
-	puts 'Publishing'
+	end
+	puts 'All the statuses were been sent'
+	sleep 10
 end
 
 desc "Converts random phrases into messages"
@@ -56,13 +61,16 @@ task :random_converter do
 	dao = DAO.new 'random'
 
 	status = dao.get_status
-
-	rc = RandomConverter.new
-	message = rc.to_message status
 	
-	uc = USMFParser.new
-	usmf = uc.to_usmf(message,'Random')
+	while status != nil
 	
-	dao.publish usmf
+		rc = RandomConverter.new
+		usmf = rc.to_usmf status
+		
+		dao.publish usmf.to_hash.to_json
+		puts 'Publishing'
+	
+	end
 
+	puts 'All the statuses were been sent'
 end
