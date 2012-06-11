@@ -38,21 +38,24 @@ task :twitter_converter do
 
 	dao = DAO.new 'twitter'
 
-	status = dao.get_status
-	puts 'Status retrieved'
+	while true
 
-	while status != nil
-		
-		tc = TwitterConverter.new
-		usmf = tc.to_usmf status
-
-		dao.publish usmf.to_hash.to_json
-		puts 'Publishing'
 		status = dao.get_status
+		puts 'Status retrieved'
 
+		while status != nil
+			
+			tc = TwitterConverter.new
+			usmf = tc.to_usmf status
+
+			dao.publish usmf.to_hash.to_json
+			puts 'Publishing'
+			status = dao.get_status
+
+		end
+		puts 'All the statuses were been sent'
+		sleep 10
 	end
-	puts 'All the statuses were been sent'
-	sleep 10
 end
 
 desc "Converts random phrases into messages"
