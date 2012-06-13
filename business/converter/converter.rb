@@ -4,6 +4,8 @@ class Converter
 	#Parses a status into a USMF
 	def to_usmf status
 
+		
+		
 	end
 
 end

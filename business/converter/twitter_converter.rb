@@ -49,7 +49,9 @@ class TwitterConverter < Converter
 			user.real_name = x["name"]
 			user.id = x["id_str"]
 			user.language = x["lang"]
-			user.utc = x["time_zone"].to_s + " + " + x["utc_offset"].to_s
+			unless x["time_zone"] == nil and x["utc_offset"] == nil
+				user.utc = x["time_zone"].to_s + " + " + x["utc_offset"].to_s
+			end
 			user.geo = nil
 			user.description = x["description"]
 			user.avatar = x["profile_image_url_https"]
@@ -59,6 +61,7 @@ class TwitterConverter < Converter
 			user.postings = x["statuses_count"]
 			user.profile = "https://twitter.com/#!/#{user.name}"
 			user.website = x["url"]
+			usmf.favorites = x["favourites_count"] #wrong
 
 			usmf.user = user
 			usmf.source = "https://twitter.com/#{usmf.user.name}/status/#{usmf.id}"

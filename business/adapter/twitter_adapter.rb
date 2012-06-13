@@ -1,5 +1,6 @@
 #Self implementation from Adapter class to make it works with Twitter Streaming API
 require_relative "./adapter"
+require_relative "../../helper/DAO"
 require 'json'
 require 'twitter/json_stream'
 
@@ -7,9 +8,9 @@ class TwitterAdapter < Adapter
 
 	:dao
 	
-	def initialize
+	def initialize (test='default')
 
-		@dao = DAO.new 'twitter'
+		@dao = DAO.new 'twitter', test
 
 	end
 
@@ -27,7 +28,7 @@ class TwitterAdapter < Adapter
 
 		  		@dao.save_status status
 				puts "retrieving..."
-		  		
+				
 		  	end
 		  
 			stream.on_error do |message|

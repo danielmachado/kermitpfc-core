@@ -8,11 +8,12 @@ class Link
 	end
 
 	def to_hash
-		res = {  "service" => service,
+		res = {  
+				"service" => service,
 				"title" => title,
 				"thumbnail" => thumbnail,
 				"href" => href
-			}
+			  }
 		res
 	end
 

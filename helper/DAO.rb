@@ -3,13 +3,21 @@ require 'yaml'
 
 class DAO
 
-	attr_accessor :config,:type
+	attr_accessor :config,:type, :db
 
-	def initialize type
+	def initialize (type, mode='default')
+
 		@type = type
-		@config = YAML::load( File.open( 'config.yml' ) )
+		
+		if mode == 'test'
+			@config = YAML::load( File.open( '../config.yml' ) )
+		else
+			@config = YAML::load( File.open( 'config.yml' ) )
+		end
+
 		puts 'config loaded OK'
 		connect_database
+
 	end
 
 	#Connects to a redis database
@@ -34,6 +42,10 @@ class DAO
 	def save_status status
 		@db.rpush @config["redis"][type], status
 		puts "Status saved"
+	end
+
+	def size
+		@db.llen @config["redis"][type]
 	end
 
 	def publish usmf

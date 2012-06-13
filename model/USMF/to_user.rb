@@ -9,13 +9,13 @@ class ToUser
 
 	def to_hash
 		res = {
-			"name" => name,
-			"id" => id,
-			"service" => service,
-			"title" => title,
-			"thumbnail" => thumbnail,
-			"href" => href
-		}
+				"name" => name,
+				"id" => id,
+				"service" => service,
+				"title" => title,
+				"thumbnail" => thumbnail,
+				"href" => href
+			  }
 		res
 	end
 

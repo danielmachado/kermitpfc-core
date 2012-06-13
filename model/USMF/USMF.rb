@@ -13,36 +13,43 @@ class USMF
 
   def to_hash
 
-  	res = { "service" => service, 
-  		  "id" => id,
-  			"geo" => geo,
-  			"application" => application,
-  			"location" => location,
-  			"date" => date,
-  			"source" => source,
-  			"text" => text,
-  			"description" => description,
-  			"keywords" => keywords,
-  			"category" => category,
-  			"duration" => duration,
-  			"likes" => likes,
-  			"dislikes" => dislikes,
-  			"favorites" => favorites,
-  			"comments" => comments,
-  			"rates" => rates,
-  			"rating" => rating,
-  			"min_rating" => min_rating,
-  			"max_rating" => max_rating
-  		}
-      begin
-        unless :user == nil
-          res["user"] = user.to_hash
-        end
-      rescue
-        res["user"] = nil
-        puts 'A corrupt user was found'
+  	res = { 
+            "service" => service, 
+      		  "id" => id,
+      			"geo" => geo,
+      			"application" => application,
+      			"location" => location,
+      			"date" => date,
+      			"source" => source,
+      			"text" => text,
+      			"description" => description,
+      			"keywords" => keywords,
+      			"category" => category,
+      			"duration" => duration,
+      			"likes" => likes,
+      			"dislikes" => dislikes,
+      			"favorites" => favorites,
+      			"comments" => comments,
+      			"rates" => rates,
+      			"rating" => rating,
+      			"min_rating" => min_rating,
+      			"max_rating" => max_rating
+  		    }
+    begin
+    
+      unless :user == nil
+        res["user"] = user.to_hash
       end
+    
+    rescue
+    
+      res["user"] = nil
+      puts 'A corrupt user was found'
+    
+    end
+
       l = []
+    
       unless :links == nil
 
         links.each do |link|
@@ -50,10 +57,13 @@ class USMF
           l << link.to_hash
 
         end
+    
         res["links"] = l
+    
       end
 
       tu = []
+    
       unless :to_users == nil
 
         to_users.each do |us|
@@ -61,7 +71,9 @@ class USMF
           tu << us.to_hash
 
         end
+    
         res["to_users"] = tu
+    
       end      
 
   	res
