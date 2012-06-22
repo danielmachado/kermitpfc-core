@@ -1,3 +1,5 @@
+require 'logger'
+
 require_relative './converter'
 require_relative '../../model/USMF/USMF'
 require_relative '../../model/USMF/link'
@@ -6,56 +8,33 @@ require_relative '../../model/USMF/user'
 
 class RandomConverter < Converter
 
+      def initialize(test='default')
+            @test = test
+            if(@test=='default')
+                  @logger = Logger.new('./log/log.txt','monthly')
+            else
+                  @logger = Logger.new('../log/log.txt','monthly')
+            end
+      end
+
 	#Parses a status into a USMF
 	def to_usmf status
-
-		usmf = USMF.new
+            @logger.debug("Start the random parse")
+		usmf = USMF.new @test
 		user = User.new
 
 		x = status.split('@')
 
 		usmf.service = 'Random' 
       	usmf.id = x[0]
-      	usmf.geo = nil
-      	usmf.application = nil
-      	usmf.location = nil
-      	usmf.date = nil
-      	usmf.source = nil
       	usmf.text = x[2]
-      	usmf.description = nil
-      	usmf.keywords = nil
-      	usmf.category = nil
-      	usmf.duration = nil
-      	usmf.likes = nil
-      	usmf.dislikes = nil
-      	usmf.favorites = nil
-      	usmf.comments = nil
-      	usmf.rates = nil
-      	usmf.rating = nil
-      	usmf.min_rating = nil
-      	usmf.max_rating = nil
-
       	user.name = x[1]
-      	user.real_name = nil
-      	user.id = nil
-      	user.language = nil
-      	user.utc = nil
-      	user.geo = nil
-      	user.description = nil
-      	user.avatar = nil
-      	user.location = nil
-      	user.subscribers = nil
-      	user.subscriptions = nil
-      	user.postings = nil
-      	user.profile = nil
-      	user.website = nil
 
       	usmf.user = user
 
       	usmf.links = []
       	usmf.to_users = []
-
-
+            @logger.debug("Finish the random parse: " + usmf.to_s)
 		usmf
 		
 	end

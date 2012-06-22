@@ -1,16 +1,22 @@
 #Self implementation from Adapter class to make it works with Twitter Streaming API
-require_relative "./adapter"
-require_relative "../../helper/DAO"
+require 'logger'
 require 'json'
 require 'twitter/json_stream'
 
-class TwitterAdapter < Adapter
+require_relative "./adapter"
+require_relative "../../helper/DAO"
 
-	:dao
+class TwitterAdapter < Adapter
 	
 	def initialize (test='default')
-
+		if(test=='default')
+			@logger = Logger.new('./log/log.txt','monthly')
+		else
+			@logger = Logger.new('../log/log.txt','monthly')
+		end
+		@logger.info('Starting TwitterAdapter...')
 		@dao = DAO.new 'twitter', test
+		@logger.info('Database started in ' + test + ' mode')
 
 	end
 
@@ -26,27 +32,31 @@ class TwitterAdapter < Adapter
 
 		  	stream.each_item do |status|
 
-		  		@dao.save_status status
-				puts "retrieving..."
+		  		persist status
+				@logger.debug('retrieving...')
 				
 		  	end
 		  
 			stream.on_error do |message|
-			    puts "error: #{message}\n"
+			    @logger.error("#{message}")
 			end
 			  
 			stream.on_reconnect do |timeout, retries|
-			    puts "reconnecting in: #{timeout} seconds\n"
+			    @logger.warn("reconnecting in: #{timeout} seconds\n")
 			end
 			  
 			stream.on_max_reconnects do |timeout, retries|
-			    puts "Failed after #{retries} failed reconnects\n"
+			    @logger.fatal("Failed after #{retries} failed reconnects\n")
 			end
 		  
 		  	trap('TERM') {
 		    	stream.stop
 		  	}
 		}
+	end
+
+	def persist status
+		@dao.save_status status
 	end
 
 end

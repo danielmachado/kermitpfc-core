@@ -1,9 +1,21 @@
 require 'redis'
 require 'em-websocket'
+require 'logger'
 
 SOCKETS = []
 
 class WebSocketServer
+
+  def initialize(test='default')
+    if(test=='default')
+          @logger = Logger.new('./log/log.txt','monthly')
+    else
+          @logger = Logger.new('../log/log.txt','monthly')
+    end
+
+    @logger.info("Starting WebSocketServer...")
+  
+  end
   
   def start
     @redis = Redis.new(:host => '127.0.0.1', :port => 6379)
@@ -34,8 +46,8 @@ class WebSocketServer
       @redis.subscribe('ws') do |on|
         
         on.message do |chan, msg|
-         puts "sending message: #{msg}"
-         
+         puts "#{msg}"
+        
          SOCKETS.each {|s| s.send msg} 
         end
       end

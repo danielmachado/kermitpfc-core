@@ -1,4 +1,5 @@
 #Generates a random phrase
+
 class RandomPhraseGenerator
 
 	def generate

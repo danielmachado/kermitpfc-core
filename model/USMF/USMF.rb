@@ -1,8 +1,19 @@
+require 'logger'
 require_relative './user'
+
 class USMF
 	
   attr_accessor :service,:user,:to_users,:links,:id,:geo,:application,:location,:date,:source,:text,:description,:keywords,
   :category,:duration,:likes,:dislikes,:favorites,:comments,:rates,:rating,:min_rating,:max_rating 
+
+  def initialize(test='default')
+    if(test=='default')
+      @logger = Logger.new('./log/log.txt','monthly')
+    else
+      @logger = Logger.new('../log/log.txt','monthly')
+    end
+
+  end
 
   def to_s
 
@@ -44,7 +55,7 @@ class USMF
     rescue
     
       res["user"] = nil
-      puts 'A corrupt user was found'
+      @logger.error("A corrupt user was found")
     
     end
 
