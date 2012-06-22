@@ -13,3 +13,5 @@ How to use
 The first thing to know is that is written in Ruby, so it uses a number of gems that are defined in a Bundler Gemfile to make an easy setup.
 
 Once the gems are installed, we start the framework with its Twitter implementation. To make it easy, the code has been grouped into Rake tasks so we can identify the tasks as "initialize_websocket_server" to serve the common stream, "twitter_adapter" to parse the tweets, "twitter_converter" to convert tweets into USMF and publish it on the websocket in JSON form and a "websocket_client" to watch the publications.
+
+Finally, before start the app you must edit the config.yml file to introduce your Twitter credentials.
