@@ -1,20 +1,34 @@
+require 'logger'
+require 'json'
+
 require_relative './converter'
 require_relative '../../model/USMF/USMF'
 require_relative '../../model/USMF/link'
 require_relative '../../model/USMF/to_user'
 require_relative '../../model/USMF/user'
 
-require 'json'
-
 class TwitterConverter < Converter
+
+	def initialize(test='default')
+            @test = test
+            if(@test=='default')
+                  @logger = Logger.new('./log/log.txt','monthly')
+            else
+                  @logger = Logger.new('../log/log.txt','monthly')
+            end
+            @logger.debug("Starting RandomAdapter...")
+    end
 
 	def to_usmf status
 
-		usmf = USMF.new
+		@logger.debug("Starting tweet parse")
+
+		usmf = USMF.new @test 
 		user = User.new
 
 		status = JSON.parse(status)
 		if status.has_key? 'Error'
+			@logger.error("tweet malformed")
 			raise "status malformed"
 		end
 
@@ -40,7 +54,6 @@ class TwitterConverter < Converter
 		usmf.text = status["text"]
 		usmf.description = status["in_reply_to_status_id_str"]
 		usmf.likes = status["retweet_count"]
-		usmf.dislikes = nil
 
 		#Retrieving user
 		x = status["user"]
@@ -49,10 +62,11 @@ class TwitterConverter < Converter
 			user.real_name = x["name"]
 			user.id = x["id_str"]
 			user.language = x["lang"]
+
 			unless x["time_zone"] == nil and x["utc_offset"] == nil
 				user.utc = x["time_zone"].to_s + " + " + x["utc_offset"].to_s
 			end
-			user.geo = nil
+
 			user.description = x["description"]
 			user.avatar = x["profile_image_url_https"]
 			user.location = x["location"]
@@ -61,7 +75,6 @@ class TwitterConverter < Converter
 			user.postings = x["statuses_count"]
 			user.profile = "https://twitter.com/#!/#{user.name}"
 			user.website = x["url"]
-			usmf.favorites = x["favourites_count"] #wrong
 
 			usmf.user = user
 			usmf.source = "https://twitter.com/#{usmf.user.name}/status/#{usmf.id}"
@@ -82,9 +95,6 @@ class TwitterConverter < Converter
 			unless x == nil
 				x.each do |item|
 					l = Link.new
-					l.title = nil
-					l.service = nil
-					l.thumbnail = nil
 					l.href = item["url"]
 					
 					usmf.links << l
@@ -98,7 +108,6 @@ class TwitterConverter < Converter
 				x.each do |item|
 					l = Link.new
 					l.title = item["type"]
-					l.service = nil
 					l.thumbnail = item["media_url"]
 					l.href = item["url"]
 					
@@ -145,6 +154,8 @@ class TwitterConverter < Converter
 			end
 
 		end
+
+		@logger.debug("Finished tweet parse: " + usmf.to_s)
 
 		usmf
 

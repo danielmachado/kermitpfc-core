@@ -18,12 +18,12 @@ describe RandomConverter, "#to_usmf" do
 
 	status.should_not == nil
 		
-	rc = RandomConverter.new
+	rc = RandomConverter.new 'test'
 	real = rc.to_usmf status[0]
 
 	#build a usmf with the status, we need to parse the same phrase 
 
-	test = USMF.new
+	test = USMF.new 'test'
 	puts 'Checking Status...'
 	test.service = 'Random'
 	real.service.should == test.service
