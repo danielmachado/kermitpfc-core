@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require './kermitpfc.rb'
+require 'commander/import'
+
+program :name, 'kermitpfc'
+program :version, '1.0.0'
+program :description, 'Framework which allows retrieve status from diverse social network and publish it in a websocket on a USMF standard way'
+program :help, 'Author', 'Daniel Machado Fernandez'
+
+command :start_server do |c|
+  c.syntax = 'kermitpfc start_server'
+  c.description = 'Start the websocket server which is the responsable to distribute the USMFs to the data miners'
+  c.action do |args, options|
+    k = KermitPFC.new
+    k.initialize_websocket_server
+  end
+end
+
+command :twitter_adapter do |c|
+  c.syntax = 'kermitpfc twitter_adapter'
+  c.description = 'Retrieves status from Twitter'
+  c.action do |args, options|
+    k = KermitPFC.new
+    k.twitter_adapter 
+  end
+end
+
+
+command :twitter_converter do |c|
+  c.syntax = 'kermitpfc twitter_converter'
+  c.description = 'Converts Twitter status into USMFs and send them through the websocket server'
+  c.action do |args, options|
+    k = KermitPFC.new
+    k.twitter_converter
+  end
+end
+
+command :random_adapter do |c|
+  c.syntax = 'kermitpfc random_adapter'
+  c.description = 'Retrieves status from RPG'
+  c.action do |args, options|
+    k = KermitPFC.new
+    k.random_adapter
+  end
+end
+
+command :random_converter do |c|
+  c.syntax = 'kermitpfc random_converter'
+  c.description = 'Publish those statuses on the websocket server'
+  c.action do |args, options|
+    k = KermitPFC.new
+    k.random_converter
+  end
+end

@@ -16,7 +16,6 @@ task :initialize_websocket_server do
 
 end
 
-
 desc "Retrieves tweets from the Twitter Streaming API"
 task :twitter_adapter do
 	
