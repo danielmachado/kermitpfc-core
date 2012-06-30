@@ -146,7 +146,7 @@ class TwitterConverter < Converter
 					end
 					unless status["in_reply_to_status_id_str"] == nil
 						tu.title = status["in_reply_to_status_id_str"]
-						tu.href = "https://twitter.com/#{usmf.user.name}/status/#{usmf.id}"
+						tu.href = "https://twitter.com/#{tu.name}/status/#{tu.title}"
 					end
 
 					usmf.to_users << tu
@@ -155,7 +155,7 @@ class TwitterConverter < Converter
 
 		end
 
-		@logger.debug("Finished tweet parse: " + usmf.to_s)
+		@logger.debug("Finished tweet parse")
 
 		usmf
 

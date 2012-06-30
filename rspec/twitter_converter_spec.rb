@@ -10,15 +10,16 @@ describe TwitterConverter, "#to_usmf" do
   
   it "returns a usmf that should be equals to the test_usmf" do
 
-  	dao = DAO.new 'twitter', 'test'
+  	status = '{"entities":{"hashtags":[],"user_mentions":[{"screen_name":"Tukkka_","indices":[0,8],"id_str":"185248725","name":"Marta Carrera","id":185248725}],"urls":[]},"text":"@Tukkka_ Gracias. Pasar de tener a tus dos equipos en 2 y 2B a tenerlos en 2B y 3 respectivamente. Volveremos a ser grande, no lo dudes.","place":null,"in_reply_to_screen_name":"Tukkka_","truncated":false,"in_reply_to_status_id_str":"219021134480412673","favorited":false,"retweet_count":0,"source":"web","in_reply_to_user_id_str":"185248725","id_str":"219021815631183872","coordinates":null,"geo":null,"contributors":null,"created_at":"Sat Jun 30 10:57:24 +0000 2012","in_reply_to_user_id":185248725,"user":{"lang":"es","profile_background_image_url_https":"https:\/\/si0.twimg.com\/profile_background_images\/573127406\/n5v3a4dvj4n3f91o7sru.jpeg","profile_sidebar_fill_color":"DDEEF6","screen_name":"DXTaldia","show_all_inline_media":false,"listed_count":1,"profile_sidebar_border_color":"C0DEED","statuses_count":1636,"following":null,"description":"Blanco. Red. Teddy Bear. Industrial. Knickerbocker. Ranger. Where amazing happens. Colaborador de f\u00fatbol sala en @RepasoDeportivo.","default_profile":false,"profile_use_background_image":true,"id_str":"508941121","is_translator":false,"profile_text_color":"333333","profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/2287684652\/t4u7vmx6atmibl3pv1rv_normal.jpeg","profile_background_image_url":"http:\/\/a0.twimg.com\/profile_background_images\/573127406\/n5v3a4dvj4n3f91o7sru.jpeg","time_zone":null,"created_at":"Wed Feb 29 15:21:06 +0000 2012","followers_count":99,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/2287684652\/t4u7vmx6atmibl3pv1rv_normal.jpeg","verified":false,"profile_link_color":"","protected":false,"url":null,"default_profile_image":false,"name":"Mr. Dxt","contributors_enabled":false,"geo_enabled":false,"favourites_count":13,"friends_count":203,"profile_background_color":"","id":508941121,"follow_request_sent":null,"notifications":null,"profile_background_tile":true,"utc_offset":null,"location":""},"retweeted":false,"id":219021815631183872,"in_reply_to_status_id":219021134480412673}';
 
-  	status = dao.db.lrange 'tweets', 0,0
+
+
   	puts 'Status retrieved'
 
 	status.should_not == nil
 		
 	tc = TwitterConverter.new 'test'
-	real = tc.to_usmf status[0]
+	real = tc.to_usmf status
 
 	#build a usmf with the status, we need to parse the same tweet 
 
@@ -26,31 +27,31 @@ describe TwitterConverter, "#to_usmf" do
 	puts 'Checking Status...'
 	test.service = 'Twitter'
 	real.service.should == test.service
-	test.id = '212119420636635136'
+	test.id = '219021815631183872'
 	real.id.should == test.id
 	test.geo = nil
 	real.geo.should == test.geo
-	test.application = '\\u003Ca href=\\\"http:\\/\\/twitter.com\\/#!\\/download\\/iphone\\\" rel=\\\"nofollow\\\"\\u003ETwitter for iPhone\\u003C\\/a\\u003E'
-#	real.application.should == test.application
+	test.application = 'web'
+	real.application.should == test.application
 	test.location = nil
 	real.location.should == test.location
-	test.date = 'Mon Jun 11 09:49:45 +0000 2012'
+	test.date = 'Sat Jun 30 10:57:24 +0000 2012'
 	real.date.should == test.date
-	test.source = 'https://twitter.com/DagLar_Merve/status/212119420636635136'
+	test.source = 'https://twitter.com/DXTaldia/status/219021815631183872'
 	real.source.should == test.source
-	test.text = 'BO\\u011eA: Sizin ilginize ihtiyac\\u0131 olan biri var .. Onu g\\u00f6rmemezlikten gelmeyin! Ya\\u015fad\\u0131\\u011f\\u0131n\\u0131z baz\\u0131 eski g\\u00fcnlere geri d\\u00f6nm ...'
-#	real.text.should == test.text
+	test.text = '@Tukkka_ Gracias. Pasar de tener a tus dos equipos en 2 y 2B a tenerlos en 2B y 3 respectivamente. Volveremos a ser grande, no lo dudes.'
+	real.text.should == test.text
 	test.keywords = ""
 	real.keywords.should == test.keywords
 	test.category = nil
 	real.category.should == test.category
 	test.duration = nil
 	real.duration.should == test.duration
-	test.likes = 127
+	test.likes = 0
 	real.likes.should == test.likes
 	test.dislikes = nil
 	real.dislikes.should == test.dislikes
-	test.favorites = 10
+	test.favorites = nil
 	real.favorites.should == test.favorites
 	test.comments = nil
 	real.comments.should == test.comments
@@ -66,33 +67,33 @@ describe TwitterConverter, "#to_usmf" do
 
 	user = User.new
 	puts 'Checking User...'
-	user.name = 'DagLar_Merve'
+	user.name = 'DXTaldia'
 	real.user.name.should == user.name
-	user.real_name = 'Merve Da\\u011flar'
-#	real.user.real_name.should == user.real_name
-	user.id = '527622545'
+	user.real_name = 'Mr. Dxt'
+	real.user.real_name.should == user.real_name
+	user.id = '508941121'
 	real.user.id.should == user.id
-	user.language = 'tr'
+	user.language = 'es'
 	real.user.language.should == user.language
 	user.utc = nil
 	real.user.utc.should == user.utc
 	user.geo = nil
 	real.user.geo.should == user.geo
-#	user.description = "\\u0130stanbul \\u00dcniversitesi Radyo&Televizyon okuyor\"
-#	real.user.description.should == user.description
-	user.avatar = 'https://si0.twimg.com/profile_images/2251889444/image_normal.jpg'
+	user.description = "Blanco. Red. Teddy Bear. Industrial. Knickerbocker. Ranger. Where amazing happens. Colaborador de f\u00fatbol sala en @RepasoDeportivo."
+	real.user.description.should == user.description
+	user.avatar = 'https://si0.twimg.com/profile_images/2287684652/t4u7vmx6atmibl3pv1rv_normal.jpeg'
 	real.user.avatar.should == user.avatar
-#	user.location = '\\u0130stanbul'
-#	real.user.location.should == user.location
-	user.subscribers = 88
+	user.location = ''
+	real.user.location.should == user.location
+	user.subscribers = 99
 	real.user.subscribers.should == user.subscribers
-	user.subscriptions = 118
+	user.subscriptions = 203
 	real.user.subscriptions.should == user.subscriptions
-	user.postings = 433
+	user.postings = 1636
 	real.user.postings.should == user.postings
-	user.profile = "https://twitter.com/#!/DagLar_Merve"
+	user.profile = "https://twitter.com/#!/DXTaldia"
 	real.user.profile.should == user.profile
-	user.website = 'https://www.facebook.com/#!/merve.daglar1'
+	user.website = nil
 	real.user.website.should == user.website
 
 	puts 'User OK'
@@ -107,12 +108,12 @@ describe TwitterConverter, "#to_usmf" do
   	
   	tu = ToUser.new
 
-	tu.name = 'burcunuznediyor'
-	tu.id = '305062697'
-	tu.service = 'mention'
-	tu.title = nil
+	tu.name = 'Tukkka_'
+	tu.id = '185248725'
+	tu.service = 'reply'
+	tu.title = '219021134480412673'
 	tu.thumbnail = nil
-	tu.href = nil
+	tu.href = 'https://twitter.com/Tukkka_/status/219021134480412673'
 	to_u << tu
 
 	to_u.each do |x|
@@ -131,133 +132,3 @@ describe TwitterConverter, "#to_usmf" do
   end
 
 end
-
-
-# "{\"entities\":{
-# 	\"user_mentions\":[{
-# 		\"indices\":[3,19],
-# 		\"id_str\":\"305062697\",
-# 		\"screen_name\":\"burcunuznediyor\",
-# 		\"name\":\"burcunuz ne diyor\",
-# 		\"id\":305062697}],
-# 	\"urls\":[],
-# 	\"hashtags\":[]},
-# \"in_reply_to_screen_name\":null,
-# \"text\":\"RT @burcunuznediyor: BO\\u011eA: Sizin ilginize ihtiyac\\u0131 olan biri var .. Onu g\\u00f6rmemezlikten gelmeyin! Ya\\u015fad\\u0131\\u011f\\u0131n\\u0131z baz\\u0131 eski g\\u00fcnlere geri d\\u00f6nm ...\",
-# \"id_str\":\"212119420636635136\",
-# \"place\":null,
-# \"retweeted_status\":{
-# 	\"entities\":{
-# 		\"user_mentions\":[],
-# 		\"urls\":[],
-# 		\"hashtags\":[]},
-# 	\"in_reply_to_screen_name\":null,
-# 	\"text\":\"BO\\u011eA: Sizin ilginize ihtiyac\\u0131 olan biri var .. Onu g\\u00f6rmemezlikten gelmeyin! Ya\\u015fad\\u0131\\u011f\\u0131n\\u0131z baz\\u0131 eski g\\u00fcnlere geri d\\u00f6nmek istiyorsunuz ..\",
-# 	\"id_str\":\"212109054057783296\",
-# 	\"place\":null,
-# 	\"in_reply_to_status_id\":null,
-# 	\"contributors\":null,
-# 	\"retweet_count\":127,
-# 	\"favorited\":false,
-# 	\"truncated\":false,
-# 	\"source\":\"web\",
-# 	\"in_reply_to_status_id_str\":null,
-# 	\"created_at\":\"Mon Jun 11 09:08:33 +0000 2012\",
-# 	\"in_reply_to_user_id_str\":null,
-# 	\"in_reply_to_user_id\":null,
-# 	\"user\":{
-# 		\"lang\":\"tr\",
-# 		\"profile_background_image_url\":\"http:\\/\\/a0.twimg.com\\/images\\/themes\\/theme15\\/bg.png\",
-# 		\"id_str\":\"305062697\",
-# 		\"default_profile\":false,
-# 		\"profile_link_color\":\"0084B4\",
-# 		\"is_translator\":false,
-# 		\"statuses_count\":4609,
-# 		\"following\":null,
-# 		\"profile_background_image_url_https\":\"https:\\/\\/si0.twimg.com\\/images\\/themes\\/theme15\\/bg.png\",
-# 		\"friends_count\":302,
-# 		\"profile_background_color\":\"022330\",
-# 		\"description\":\"istanbul izmir..\",
-# 		\"notifications\":null,
-# 		\"profile_background_tile\":false,
-# 		\"time_zone\":\"Quito\",
-# 		\"default_profile_image\":false,
-# 		\"profile_sidebar_fill_color\":\"C0DFEC\",
-# 		\"contributors_enabled\":false,
-# 		\"geo_enabled\":false,
-# 		\"favourites_count\":86,
-# 		\"created_at\":\"Wed May 25 15:39:57 +0000 2011\",
-# 		\"profile_image_url_https\":\"https:\\/\\/si0.twimg.com\\/profile_images\\/2172786033\\/368PHOTO_normal.jpg\",
-# 		\"screen_name\":\"burcunuznediyor\",
-# 		\"follow_request_sent\":null,
-# 		\"profile_sidebar_border_color\":\"a8c7f7\",
-# 		\"protected\":false,
-# 		\"url\":null,
-# 		\"name\":\"burcunuz ne diyor\",
-# 		\"show_all_inline_media\":true,
-# 		\"verified\":false,
-# 		\"profile_use_background_image\":true,
-# 		\"followers_count\":65064,
-# 		\"profile_image_url\":\"http:\\/\\/a0.twimg.com\\/profile_images\\/2172786033\\/368PHOTO_normal.jpg\",
-# 		\"id\":305062697,
-# 		\"listed_count\":81,
-# 		\"utc_offset\":-18000,
-# 		\"profile_text_color\":\"333333\",
-# 		\"location\":\"\"},
-# 	\"retweeted\":false,
-# 	\"id\":212109054057783296,
-# 	\"coordinates\":null,
-# 	\"geo\":null}
-# \"in_reply_to_status_id\":null,
-# \"contributors\":null,
-# \"retweet_count\":127,
-# \"favorited\":false,
-# \"truncated\":true,
-# \"source\":\"\\u003Ca href=\\\"http:\\/\\/twitter.com\\/#!\\/download\\/iphone\\\" rel=\\\"nofollow\\\"\\u003ETwitter for iPhone\\u003C\\/a\\u003E\",
-# \"in_reply_to_status_id_str\":null,
-# \"created_at\":\"Mon Jun 11 09:49:45 +0000 2012\",
-# \"in_reply_to_user_id_str\":null,
-# \"in_reply_to_user_id\":null,
-# \"user\":{
-# 	\"lang\":\"tr\",
-# 	\"profile_background_image_url\":\"http:\\/\\/a0.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",
-# 	\"id_str\":\"527622545\",
-# 	\"default_profile\":true,
-# 	\"profile_link_color\":\"0084B4\",
-# 	\"is_translator\":false,
-# 	\"statuses_count\":433,
-# 	\"following\":null,
-# 	\"profile_background_image_url_https\":\"https:\\/\\/si0.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",
-# 	\"friends_count\":118,
-# 	\"profile_background_color\":\"C0DEED\",
-# 	\"description\":\"\\u0130stanbul \\u00dcniversitesi Radyo&Televizyon okuyor\",
-# 	\"notifications\":null,
-# 	\"profile_background_tile\":false,
-# 	\"time_zone\":null,
-# 	\"default_profile_image\":false,
-# 	\"profile_sidebar_fill_color\":\"DDEEF6\",
-# 	\"contributors_enabled\":false,
-# 	\"geo_enabled\":true,
-# 	\"favourites_count\":10,
-# 	\"created_at\":\"Sat Mar 17 16:38:37 +0000 2012\",
-# 	\"profile_image_url_https\":\"https:\\/\\/si0.twimg.com\\/profile_images\\/2251889444\\/image_normal.jpg\",
-# 	\"screen_name\":\"DagLar_Merve\",
-# 	\"follow_request_sent\":null,
-# 	\"profile_sidebar_border_color\":\"C0DEED\",
-# 	\"protected\":false,
-# 	\"url\":\"https:\\/\\/www.facebook.com\\/#!\\/merve.daglar1\",
-# 	\"name\":\"Merve Da\\u011flar\",
-# 	\"show_all_inline_media\":false,
-# 	\"verified\":false,
-# 	\"profile_use_background_image\":true,
-# 	\"followers_count\":88,
-# 	\"profile_image_url\":\"http:\\/\\/a0.twimg.com\\/profile_images\\/2251889444\\/image_normal.jpg\",
-# 	\"id\":527622545,
-# 	\"listed_count\":0,
-# 	\"utc_offset\":null,
-# 	\"profile_text_color\":\"333333\",
-# 	\"location\":\"\\u0130stanbul\"},
-# \"retweeted\":false,
-# \"id\":212119420636635136,
-# \"coordinates\":null,
-# \"geo\":null}"

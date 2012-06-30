@@ -21,6 +21,7 @@ class TwitterAdapter < Adapter
 	end
 
 	def connect_stream
+		@logger.debug('retrieving...')
 		EventMachine::run {
 
 			stream = Twitter::JSONStream.connect(
@@ -33,7 +34,7 @@ class TwitterAdapter < Adapter
 		  	stream.each_item do |status|
 
 		  		persist status
-				@logger.debug('retrieving...')
+		  		puts status
 				
 		  	end
 		  
