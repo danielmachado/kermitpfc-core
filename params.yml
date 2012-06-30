@@ -1,0 +1,30 @@
+#params.yml - in this file you must configure how you want to use the kermitpfc-core framework
+Twitter:
+	streams:2
+	username:myusername
+	password:mypassword
+	track:
+		trackword1:
+		trackword2:
+		.
+		.
+		.
+		n
+Google:
+	streams:1
+	keyOAUTH:myapikey
+	track/whatever:
+
+#The following don't necessary have to appears
+Facebook:
+	streams:0
+
+Tuenti:
+	streams:0
+
+Diaspora:
+	streams:0
+.
+.
+.
+n
