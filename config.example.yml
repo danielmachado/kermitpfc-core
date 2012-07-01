@@ -14,4 +14,4 @@ twitter:
  login: #Your Twitter username
  pass: #Your Twitter password
  port: #Port, in case you need to specific one.
- #if you want to add more Social Networks/Streams , it can be a good idea to follow the previous Twitter structure.
+ #if you want to add more Social Networks/Streams, it can be a good idea to follow the previous Twitter structure.
