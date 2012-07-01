@@ -13,7 +13,7 @@ class Adapter
 		raise 'This method must be implemented'
 	end
 	#Connects to a particular stream
-	def connect_stream
+	def connect_stream (stream=1)
 		@logger.fatal('The method connect_stream in Adapter must be implemented')
 		raise 'This method must be implemented'
 	end

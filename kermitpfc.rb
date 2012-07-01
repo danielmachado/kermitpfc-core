@@ -5,8 +5,42 @@ require_relative './business/adapter/random_adapter'
 require_relative './helper/DAO'
 require_relative './helper/websocket_server'
 require 'json'
+require 'yaml'
+
 
 class KermitPFC
+
+  def initialize
+
+    config = YAML::load( File.open( 'config.yml' ) )
+    
+    
+    begin
+    
+      pool = []
+      pool << Thread.new { initialize_websocket_server }
+
+      for i in 1..config["twitter"]["streams"]
+
+        pool << Thread.new { twitter_adapter i;  }
+
+      end
+
+      pool << Thread.new { twitter_converter }
+
+      pool.each do |thread|
+        thread.join
+      end
+
+    rescue Exception => e
+      
+      pool.each do |thread|
+        Thread.kill(thread)
+      end
+
+    end
+
+  end
 
   def initialize_websocket_server
 
@@ -15,17 +49,17 @@ class KermitPFC
 
   end
 
-  def twitter_adapter
+  def twitter_adapter stream
 
     ta = TwitterAdapter.new
-    ta.connect_stream
+    ta.connect_stream stream
 
   end
 
-  def random_adapter
+  def random_adapter stream
 
     ra = RandomAdapter.new
-    ra.connect_stream
+    ra.connect_stream stream
 
   end
 

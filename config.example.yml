@@ -10,8 +10,11 @@ twitter:
  streams:#number of streams you want 
  path: /1/statuses/filter.json
  track: #Keywords you want Twitter tracks and filter the Stream (one for each stream)
- 	track1: #specific keyword for each twitter stream
- login: #Your Twitter username
- pass: #Your Twitter password
+  track1: #specific keyword for each twitter stream
+  login1: #Your Twitter username
+  pass1: #Your Twitter password
+  track2: #another keyword tro track
+  login2: #Another Twitter username
+  pass2: #Another Twitter password
  port: #Port, in case you need to specific one.
  #if you want to add more Social Networks/Streams, it can be a good idea to follow the previous Twitter structure.

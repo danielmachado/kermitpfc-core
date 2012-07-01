@@ -4,6 +4,7 @@ require_relative './business/converter/random_converter'
 require_relative './business/adapter/random_adapter'
 require_relative './helper/DAO'
 require_relative './helper/websocket_server'
+require_relative './helper/websocket_client'
 require 'json'
 
 task :default => [:initialize_websocket_server]
@@ -12,6 +13,14 @@ desc "Starts the WebSocket server"
 task :initialize_websocket_server do
 
 	ws = WebSocketServer.new
+	ws.start
+
+end
+
+desc "Starts the WebSocket client"
+task :initialize_websocket_client => [:initialize_websocket_server] do
+	
+	wsc = WebSocketClient.new
 	ws.start
 
 end

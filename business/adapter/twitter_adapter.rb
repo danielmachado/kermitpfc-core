@@ -20,13 +20,14 @@ class TwitterAdapter < Adapter
 
 	end
 
-	def connect_stream
+	def connect_stream (stream=1)
 		@logger.debug('retrieving...')
+		puts 'retrieving...'
 		EventMachine::run {
 
 			stream = Twitter::JSONStream.connect(
-			   	:path    => "/1/statuses/filter.json?track=#{@dao.config["twitter"]["track"]}",
-		    	:auth    => "#{@dao.config["twitter"]["login"]}:#{@dao.config["twitter"]["pass"]}",
+			   	:path    => "/1/statuses/filter.json?track=#{@dao.config["twitter"]["track"]["track#{stream}"]}",
+		    	:auth    => "#{@dao.config["twitter"]["track"]["login#{stream}"]}:#{@dao.config["twitter"]["track"]["pass#{stream}"]}",
 		    	:ssl     => true,
 		    	:port    => @dao.config["twitter"]["port"]
 		  	)

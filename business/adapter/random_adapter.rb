@@ -18,7 +18,7 @@ class RandomAdapter < Adapter
 
 	end
 
-	def connect_stream
+	def connect_stream (stream=1)
 
 		random = RandomPhraseGenerator.new
 		i=0

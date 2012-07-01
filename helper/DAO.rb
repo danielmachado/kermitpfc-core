@@ -36,7 +36,8 @@ class DAO
 		@db = Redis.connect(
 			:db   => "#{@config["redis"]["db"]}",
 			:host => "#{@config["redis"]["host"]}",
-			:port => @config["redis"]["port"]
+			:port => @config["redis"]["port"],
+			:password => @config["redis"]["password"]
 		)
 		
 		@logger.info("Redis connect OK")
