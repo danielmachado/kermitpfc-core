@@ -34,7 +34,6 @@ class TwitterAdapter < Adapter
 		  	stream.each_item do |status|
 
 		  		persist status
-		  		puts status
 				
 		  	end
 		  
