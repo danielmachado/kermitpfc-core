@@ -1,11 +1,17 @@
 redis:
  db: #Database name where you want to store the statuses
- twitter: #Key under you want to found your statuses
- host: #address of your Redis-Server DB 
- port: #port of your Redis-Server DB
+ twitter: #Key under you want to found your tweets
+ # you must add keys for your own stream implementations
+ host: #address of your Redis-Server 
+ port: #port of your Redis-Server
+ user: #Redis user
+ password:#Redis password
+#for each Stream implementation you must define its specific params.
 twitter:
+ streams:#number of streams you want 
  path: /1/statuses/filter.json
- track: #Keyword you want Twitter tracks and filter the Stream (Must be any)
+ track: #Keywords you want Twitter tracks and filter the Stream (one for each stream)
+ 	track1: #specific keyword for each twitter stream
  login: #Your Twitter username
  pass: #Your Twitter password
  port: #Port, in case you need to specific one.

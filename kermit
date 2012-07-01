@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require './kermitpfc.rb'
+require 'commander/import'
+
+program :name, 'kermit'
+program :version, '1.0.0'
+program :description, 'Framework which allows retrieve status from diverse social network and publish it in a websocket on a USMF standard way'
+program :help, 'Author', 'Daniel Machado Fernandez'
+
+default_command :start
+
+command :start do |c|
+  c.syntax = 'kermit start'
+  c.description = 'Start the websocket server which is the responsable to distribute the USMFs to the data miners, retrieve new statuses from the Streams, converts it in USMF and publish it on the websocket.'
+  c.action do |args, options|
+    k = KermitPFC.new
+  end
+end
