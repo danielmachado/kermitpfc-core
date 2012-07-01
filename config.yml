@@ -1,0 +1,19 @@
+#DB setup parameters
+redis:
+ db: Statuses
+ twitter: tweets
+ random: random
+ host: 127.0.0.1
+ port: 6379
+ password:
+#for each Stream implementation you must define its specific params.
+twitter:
+ streams:1
+ path: /1/statuses/filter.json
+ track:
+  track1:a
+  track2:b
+ login: KermitPFC
+ pass: kermitkermit
+ port: 443
+ #if you want to add more Social Networks/Streams , it can be a good idea to follow the previous Twitter structure.

@@ -4,7 +4,6 @@ redis:
  # you must add keys for your own stream implementations
  host: #address of your Redis-Server 
  port: #port of your Redis-Server
- user: #Redis user
  password:#Redis password
 #for each Stream implementation you must define its specific params.
 twitter:
