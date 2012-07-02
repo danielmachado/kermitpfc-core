@@ -21,7 +21,7 @@ desc "Starts the WebSocket client"
 task :initialize_websocket_client => [:initialize_websocket_server] do
 	
 	wsc = WebSocketClient.new
-	ws.start
+	wsc.start
 
 end
 

@@ -47,6 +47,7 @@ class WebSocketServer
         
         on.message do |chan, msg|
         
+         puts "#{msg}"
          SOCKETS.each {|s| s.send msg} 
         
         end
