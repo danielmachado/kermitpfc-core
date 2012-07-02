@@ -5,13 +5,20 @@ It also allows different streams serve under a common way to treat data as a sin
 
 Intro
 
-kermitpfc-core is based on a series of classes to be used to ensure proper functionality of the social network you want to implement, these classes are Adapter to collect social network status, Converter to parse the previous status in the USMF model (with their respective classes). To facilitate the publish action of USMF, JSON service is used with the help of the Redis Pub / Sub module (which implements the core Redis must be installed in server mode).
+kermitpfc-core is based on a series of classes to be used to ensure proper functionality of the social network you want to implement, these classes are Adapter to collect social network status, Converter to parse the previous status in the USMF model (with their respective classes). To facilitate the publish action of USMF, JSON service is used with the help of the Redis Pub / Sub module (which implements the core, Redis must be installed in server mode).
 
 
 How to use
 
-The first thing to know is that is written in Ruby, so it uses a number of gems that are defined in a Bundler Gemfile to make an easy setup.
+KermitPFC-core has got a Twitter implementation for default, to use it:
 
-Once the gems are installed, we start the framework with its Twitter implementation. To make it easy, the code has been grouped into Rake tasks so we can identify the tasks as "initialize_websocket_server" to serve the common stream, "twitter_adapter" to parse the tweets, "twitter_converter" to convert tweets into USMF and publish it on the websocket in JSON form and a "websocket_client" to watch the publications.
+First, you must modify the config.example.yml file with your personal data (Redis connection, SocialNetwork credentials, trackwords, ...) and rename it with config.yml name.
 
-Finally, before start the app you must edit the config.yml file to introduce your Twitter credentials.
+Then, you need have been installed a redis-server database (and actually running)
+	sudo apt-get install redis-server
+and a ruby version to launch the application
+	sudo apt-get install ruby
+Finally you only need to change permisions on kermit file 
+	chmod 700 kermit
+and execute it
+	./kermit
