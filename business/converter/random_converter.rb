@@ -34,7 +34,7 @@ class RandomConverter < Converter
 
       	usmf.links = []
       	usmf.to_users = []
-            @logger.debug("Finish the random parse: " + usmf.to_s)
+            @logger.debug("Finish the random parse")
 		usmf
 		
 	end
