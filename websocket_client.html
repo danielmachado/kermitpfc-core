@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kermit-Core Streaming</title>
+		<script>
+			function onMessage(evt) {
+				con = document.getElementById("console");
+				con.innerHTML += evt.data;
+				con.innerHTML += '<br />';
+			}
+			websocket = new WebSocket("ws://0.0.0.0:8000/websocket");
+			websocket.onmessage = function(evt) { onMessage(evt); };
+		</script>
+	</head>
+	<body>
+		<div id="console">
+		</div>
+	</body>
+</html>
