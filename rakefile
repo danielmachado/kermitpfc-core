@@ -26,18 +26,18 @@ task :initialize_websocket_client => [:initialize_websocket_server] do
 end
 
 desc "Retrieves tweets from the Twitter Streaming API"
-task :twitter_adapter do
+task :twitter_adapter, :stream do |t, args|
 	
 	ta = TwitterAdapter.new
-	ta.connect_stream
+	ta.connect_stream args[:stream]
 	
 end
 
 desc "Retrieves random phrases from a RPG"
-task :random_adapter do
+task :random_adapter, :stream do |t, args|
 
 	ra = RandomAdapter.new
-	ra.connect_stream
+	ra.connect_stream args[:stream]
 
 end
 

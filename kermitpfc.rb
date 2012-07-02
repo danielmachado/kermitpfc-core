@@ -21,11 +21,11 @@ class KermitPFC
       pool << Thread.new { initialize_websocket_server }
 
       for i in 1..config["twitter"]["streams"]
-
-        pool << Thread.new { twitter_adapter i;  }
-
+        pool << Thread.new { twitter_adapter i }
+        sleep 1
       end
 
+      
       pool << Thread.new { twitter_converter }
 
       pool.each do |thread|
@@ -78,7 +78,7 @@ class KermitPFC
         usmf = tc.to_usmf status
 
         dao.publish usmf.to_hash.to_json
-        puts 'Publishing'
+        puts 'Published'
 
         status = dao.get_status
 
@@ -106,7 +106,7 @@ class KermitPFC
         usmf = rc.to_usmf status
 
         dao.publish usmf.to_hash.to_json
-        puts 'Publishing'
+        puts 'Published'
 
         status = dao.get_status
 

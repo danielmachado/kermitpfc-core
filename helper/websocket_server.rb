@@ -46,9 +46,9 @@ class WebSocketServer
       @redis.subscribe('ws') do |on|
         
         on.message do |chan, msg|
-         puts "#{msg}"
         
          SOCKETS.each {|s| s.send msg} 
+        
         end
       end
     end
