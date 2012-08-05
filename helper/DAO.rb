@@ -2,15 +2,22 @@ require 'redis'
 require 'yaml'
 require 'logger'
 
+# @author Daniel Machado Fernandez
+#
+# Data Access Object to manage the persistence layer of the app
 class DAO
 
 	attr_accessor :config,:type, :db
 
-	def initialize (type, mode='default')
+	# Config the DAO defining the Stream and the correct params for testing
+	#
+	# @param [String] type of the Data Stream to choose the correct database
+	# @param [Boolean] for test purpouses (path controversia). true if you are using rspec
+	def initialize (type, mode=false)
 
 		@type = type
 
-		if mode == 'test'
+		if mode == false
 			@logger = Logger.new('../log/log.txt','monthly')
 			@logger.debug('Starting DAO...')
 			@config = YAML::load( File.open( '../config.yml' ) )
@@ -27,7 +34,7 @@ class DAO
 
 	end
 
-	#Connects to a redis database
+	# Connects to a redis database
 	def connect_database
 		@db = Redis.new
 		
@@ -43,23 +50,34 @@ class DAO
 		@logger.info("Redis connect OK")
 	end
 
-	#Retrieves all statuses that were saved in Redis
+	# Retrieves the next status that were saved in the database
+	#
+	# @return [String] the status from the {#Adapter}
 	def get_status 
 		@logger.debug("getting status")
 		status = @db.rpop @config["redis"][type]
 		status
 	end
 
+	# Persists the status into the database
+	#
+	# @param [String] the status to persist it
 	def save_status status
 		@db.rpush @config["redis"][type], status
 		@logger.info("Status saved")
 	end
 
+	# Returns the size of the database
+	#
+	# @return [Integer] the size (items) of the database
 	def size
 		@logger.debug("getting size")
 		@db.llen @config["redis"][type]
 	end
 
+	# Publish a message in the websocket server
+	#
+	# @param [USMF] a message to publish 
 	def publish usmf
 		@logger.info("Publishing")
 		@db.publish 'ws', usmf

@@ -7,10 +7,10 @@ describe TwitterAdapter do
   describe "#connect_stream" do
     it "returns a status that was retrieved from the TwitterStream API" do
 
-		dao = DAO.new 'twitter', 'test'
+		dao = DAO.new 'twitter', true
 		prev = dao.size
 
-		a = Thread.new { adapter = TwitterAdapter.new 'test'; adapter.connect_stream; puts 'retrieving...' ;}
+		a = Thread.new { adapter = TwitterAdapter.new true; adapter.connect_stream; puts 'retrieving...' ;}
 		a.run
 		a.join 5
 		Thread.kill(a)

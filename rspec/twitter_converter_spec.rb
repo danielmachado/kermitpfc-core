@@ -18,12 +18,12 @@ describe TwitterConverter, "#to_usmf" do
 
 	status.should_not == nil
 		
-	tc = TwitterConverter.new 'test'
+	tc = TwitterConverter.new true
 	real = tc.to_usmf status
 
 	#build a usmf with the status, we need to parse the same tweet 
 
-	test = USMF.new 'test'
+	test = USMF.new true
 	puts 'Checking Status...'
 	test.service = 'Twitter'
 	real.service.should == test.service

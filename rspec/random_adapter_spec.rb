@@ -7,10 +7,10 @@ describe RandomAdapter do
   describe "#connect_stream" do
     it "returns a status that was retrieved from the RandomPhraseGenerator Stream" do
 
-		dao = DAO.new 'random', 'test'
+		dao = DAO.new 'random', true
 		prev = dao.size
 
-		a = Thread.new { adapter = RandomAdapter.new 'test'; adapter.connect_stream; puts 'retrieving...' ;}
+		a = Thread.new { adapter = RandomAdapter.new true; adapter.connect_stream; puts 'retrieving...' ;}
 		a.run
 		a.join 5
 		Thread.kill(a)

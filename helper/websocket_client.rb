@@ -1,7 +1,11 @@
 require 'em-http'
 
+# @author Daniel Machado Fernandez
+#
+# A WebSocket client to help testing the WebSocket server
 class WebSocketClient
 
+  # Starts the WebSocket client to consume the published info in the WebSocket Server
   def start
 
     EventMachine.run do

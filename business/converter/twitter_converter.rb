@@ -7,11 +7,17 @@ require_relative '../../model/USMF/link'
 require_relative '../../model/USMF/to_user'
 require_relative '../../model/USMF/user'
 
+# @author Daniel Machado Fernandez
+#
+# Twitter Specification from Converter 
 class TwitterConverter < Converter
 
-	def initialize(test='default')
+	# Initialices the logger
+	#
+	# @param [Boolean] true if you are using rspec (path controversia)
+	def initialize(test=false)
             @test = test
-            if(@test=='default')
+            if(@test==false)
                   @logger = Logger.new('./log/log.txt','monthly')
             else
                   @logger = Logger.new('../log/log.txt','monthly')
@@ -19,6 +25,10 @@ class TwitterConverter < Converter
             @logger.debug("Starting RandomAdapter...")
     end
 
+    # Field to field parsing to become a tweet into a {#USMF} message
+    #
+    # @param [String] the tweet previously retrieved
+    # @return [USMF] the resultant message
 	def to_usmf status
 
 		@logger.debug("Starting tweet parse")

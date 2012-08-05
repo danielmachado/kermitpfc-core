@@ -11,19 +11,19 @@ describe RandomConverter, "#to_usmf" do
 
   it "returns a usmf that should be equals to the test_usmf" do
 
-    dao = DAO.new 'random', 'test'
+    dao = DAO.new 'random', true
 
     status = dao.db.lrange 'random', 0,0
     puts 'Status retrieved'
 
     status.should_not == nil
 
-    rc = RandomConverter.new 'test'
+    rc = RandomConverter.new true
     real = rc.to_usmf status[0]
 
     #build a usmf with the status, we need to parse the same phrase
 
-    test = USMF.new 'test'
+    test = USMF.new true
     puts 'Checking Status...'
     test.service = 'Random'
     real.service.should == test.service

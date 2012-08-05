@@ -4,10 +4,16 @@ require 'logger'
 
 SOCKETS = []
 
+# @author Daniel Machado Fernandez
+#
+# WebSocket Server where the {#USMF} messages will be published
 class WebSocketServer
 
-  def initialize(test='default')
-    if(test=='default')
+  # Configures the WebSocket to works in test mode (path controversia)
+  #
+  # @param [Boolean] true if you are using rspec
+  def initialize(test=false)
+    if(test==false)
           @logger = Logger.new('./log/log.txt','monthly')
     else
           @logger = Logger.new('../log/log.txt','monthly')
@@ -17,6 +23,7 @@ class WebSocketServer
   
   end
   
+  # Starts the Websocket server and listen the new clients to broadcast the messages
   def start
     @redis = Redis.new(:host => '127.0.0.1', :port => 6379)
 

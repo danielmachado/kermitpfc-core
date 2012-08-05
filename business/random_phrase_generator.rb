@@ -1,7 +1,11 @@
-#Generates a random phrase
-
+# @author Daniel Machado Fernandez
+#
+# Self implementation from a Data Stream
 class RandomPhraseGenerator
 
+	# Generates a random phrase
+	#
+	# @return [String] a random phrase
 	def generate
 
 		@phrase = ["12453243@juanito@Poesia es la union de dos palabras que uno nunca supuso que pudieran juntarse, y que forman algo asi como un misterio.",
@@ -26,7 +30,7 @@ class RandomPhraseGenerator
 					"124532969@jesus@Cuando un poeta canta estamos en sus manos: el es el que sabe despertar en nosotros aquellas fuerzas secretas; sus palabras nos descubren un mundo maravilloso que antes no conociamos.",
 					"124575673223@agustin@En mi propia casa como en la ajena, he creido sentir que la poesia, al penetrar en la palabra, la descompone, la abre como un capullo a todos los matices de significacion."]
 
-	return @phrase.shuffle.first
+		return @phrase.shuffle.first
 
 	end
 
