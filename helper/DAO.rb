@@ -3,6 +3,7 @@ require 'yaml'
 require 'logger'
 
 # @author Daniel Machado Fernandez
+# @version 1.0
 #
 # Data Access Object to manage the persistence layer of the app
 class DAO
@@ -11,8 +12,8 @@ class DAO
 
 	# Config the DAO defining the Stream and the correct params for testing
 	#
-	# @param [String] type of the Data Stream to choose the correct database
-	# @param [Boolean] for test purpouses (path controversia). true if you are using rspec
+	# @param type [String] type of the Data Stream to choose the correct database
+	# @param mode [Boolean] for test purpouses (path controversia). true if you are using rspec
 	def initialize (type, mode=false)
 
 		@type = type
@@ -52,7 +53,7 @@ class DAO
 
 	# Retrieves the next status that were saved in the database
 	#
-	# @return [String] the status from the {#Adapter}
+	# @return status [String] the status from the Adapter
 	def get_status 
 		@logger.debug("getting status")
 		status = @db.rpop @config["redis"][type]
@@ -61,7 +62,7 @@ class DAO
 
 	# Persists the status into the database
 	#
-	# @param [String] the status to persist it
+	# @param status [String] the status to persist it
 	def save_status status
 		@db.rpush @config["redis"][type], status
 		@logger.info("Status saved")
@@ -69,7 +70,7 @@ class DAO
 
 	# Returns the size of the database
 	#
-	# @return [Integer] the size (items) of the database
+	# @return size [Integer] the size (items) of the database
 	def size
 		@logger.debug("getting size")
 		@db.llen @config["redis"][type]
@@ -77,7 +78,7 @@ class DAO
 
 	# Publish a message in the websocket server
 	#
-	# @param [USMF] a message to publish 
+	# @param usmf [USMF] a message to publish 
 	def publish usmf
 		@logger.info("Publishing")
 		@db.publish 'ws', usmf

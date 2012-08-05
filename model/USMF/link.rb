@@ -1,4 +1,5 @@
 # @author Daniel Machado Fernandez
+# @version 1.0
 #
 # A Link model
 class Link
@@ -7,7 +8,7 @@ class Link
 
 	# Unify the fields into a string
   	#
-  	# @return [String] resultant string
+  	# @return res [String] resultant string
 	def to_s
 		res = "\nservice: " + service.to_s + "\ntitle: " + title.to_s + "\nthumbnail: " + thumbnail.to_s + "\nhref: " + href.to_s
 		res
@@ -15,7 +16,7 @@ class Link
 
   	# Unify the fields into a hash
   	#
-  	# @return [Hash] resultant hash
+  	# @return res [Hash] resultant hash
 	def to_hash
 		res = {  
 				"service" => service,

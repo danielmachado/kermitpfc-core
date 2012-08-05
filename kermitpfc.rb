@@ -7,9 +7,13 @@ require_relative './helper/websocket_server'
 require 'json'
 require 'yaml'
 
-
+# @author Daniel Machado Fernandez
+# @version 1.0
+#
+# Masterclass that adapts the rakefile into a class to use the commander gem
 class KermitPFC
 
+  # Load the config file
   def initialize
 
     config = YAML::load( File.open( 'config.yml' ) )
@@ -42,6 +46,7 @@ class KermitPFC
 
   end
 
+  # Starts the WebSocket Server
   def initialize_websocket_server
 
     ws = WebSocketServer.new
@@ -49,6 +54,9 @@ class KermitPFC
 
   end
 
+  # Starts the Twitter Adapter
+  #
+  # @param stream [Integer] the number of the stream
   def twitter_adapter stream
 
     ta = TwitterAdapter.new
@@ -56,6 +64,9 @@ class KermitPFC
 
   end
 
+  # Starts the Random Adapter
+  #
+  # @param stream [Integer] the number of the stream
   def random_adapter stream
 
     ra = RandomAdapter.new
@@ -63,6 +74,7 @@ class KermitPFC
 
   end
 
+  # Starts the Twitter Converter
   def twitter_converter
 
     dao = DAO.new 'twitter'
@@ -91,6 +103,7 @@ class KermitPFC
 
   end
 
+  # Starts the Random Converter
   def random_converter
 
     dao = DAO.new 'random'

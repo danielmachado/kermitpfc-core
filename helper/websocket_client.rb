@@ -1,8 +1,9 @@
 require 'em-http'
 
 # @author Daniel Machado Fernandez
+# @version 1.0
 #
-# A WebSocket client to help testing the WebSocket server
+# A WebSocket client to help testing the WebSocket Server
 class WebSocketClient
 
   # Starts the WebSocket client to consume the published info in the WebSocket Server

@@ -1,0 +1,803 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: KermitPFC
+  
+    &mdash; Documentation by YARD 0.8.2.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (K)</a> &raquo;
+    
+    
+    <span class="title">KermitPFC</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: KermitPFC
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">KermitPFC</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">kermitpfc.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Masterclass that adapts the rakefile into a class to use the commander gem
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+Daniel Machado Fernandez
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Version:</p>
+<ul class="version">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+1.0
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (KermitPFC) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Load the config file.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize_websocket_server-instance_method" title="#initialize_websocket_server (instance method)">- (Object) <strong>initialize_websocket_server</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Starts the WebSocket Server.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#random_adapter-instance_method" title="#random_adapter (instance method)">- (Object) <strong>random_adapter</strong>(stream) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Starts the Random Adapter.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#random_converter-instance_method" title="#random_converter (instance method)">- (Object) <strong>random_converter</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Starts the Random Converter.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#twitter_adapter-instance_method" title="#twitter_adapter (instance method)">- (Object) <strong>twitter_adapter</strong>(stream) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Starts the Twitter Adapter.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#twitter_converter-instance_method" title="#twitter_converter (instance method)">- (Object) <strong>twitter_converter</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Starts the Twitter Converter.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="KermitPFC (class)">KermitPFC</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Load the config file
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'kermitpfc.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+
+  <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
+  
+  
+  <span class='kw'>begin</span>
+  
+    <span class='id identifier rubyid_pool'>pool</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_initialize_websocket_server'>initialize_websocket_server</span> <span class='rbrace'>}</span>
+
+    <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>1</span><span class='op'>..</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>twitter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>streams</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_twitter_adapter'>twitter_adapter</span> <span class='id identifier rubyid_i'>i</span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>1</span>
+    <span class='kw'>end</span>
+
+    
+    <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_twitter_converter'>twitter_converter</span> <span class='rbrace'>}</span>
+
+    <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_thread'>thread</span><span class='op'>|</span>
+      <span class='id identifier rubyid_thread'>thread</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+    <span class='kw'>end</span>
+
+  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    
+    <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_thread'>thread</span><span class='op'>|</span>
+      <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='id identifier rubyid_thread'>thread</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+  <span class='kw'>end</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="initialize_websocket_server-instance_method">
+  
+    - (<tt>Object</tt>) <strong>initialize_websocket_server</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Starts the WebSocket Server
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'kermitpfc.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize_websocket_server'>initialize_websocket_server</span>
+
+  <span class='id identifier rubyid_ws'>ws</span> <span class='op'>=</span> <span class='const'>WebSocketServer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_ws'>ws</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="random_adapter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>random_adapter</strong>(stream) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Starts the Random Adapter
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>stream</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the number of the stream
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'kermitpfc.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_random_adapter'>random_adapter</span> <span class='id identifier rubyid_stream'>stream</span>
+
+  <span class='id identifier rubyid_ra'>ra</span> <span class='op'>=</span> <span class='const'>RandomAdapter</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_ra'>ra</span><span class='period'>.</span><span class='id identifier rubyid_connect_stream'>connect_stream</span> <span class='id identifier rubyid_stream'>stream</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="random_converter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>random_converter</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Starts the Random Converter
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'kermitpfc.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_random_converter'>random_converter</span>
+
+  <span class='id identifier rubyid_dao'>dao</span> <span class='op'>=</span> <span class='const'>DAO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>random</span><span class='tstring_end'>'</span></span>
+
+  <span class='kw'>while</span> <span class='kw'>true</span>
+
+    <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_get_status'>get_status</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Status retrieved</span><span class='tstring_end'>'</span></span>
+
+    <span class='kw'>while</span> <span class='id identifier rubyid_status'>status</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+
+      <span class='id identifier rubyid_rc'>rc</span> <span class='op'>=</span> <span class='const'>RandomConverter</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+      <span class='id identifier rubyid_usmf'>usmf</span> <span class='op'>=</span> <span class='id identifier rubyid_rc'>rc</span><span class='period'>.</span><span class='id identifier rubyid_to_usmf'>to_usmf</span> <span class='id identifier rubyid_status'>status</span>
+
+      <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='id identifier rubyid_usmf'>usmf</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Published</span><span class='tstring_end'>'</span></span>
+
+      <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_get_status'>get_status</span>
+
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>All the statuses were been sent</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>10</span>
+
+  <span class='kw'>end</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="twitter_adapter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>twitter_adapter</strong>(stream) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Starts the Twitter Adapter
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>stream</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the number of the stream
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'kermitpfc.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_twitter_adapter'>twitter_adapter</span> <span class='id identifier rubyid_stream'>stream</span>
+
+  <span class='id identifier rubyid_ta'>ta</span> <span class='op'>=</span> <span class='const'>TwitterAdapter</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_ta'>ta</span><span class='period'>.</span><span class='id identifier rubyid_connect_stream'>connect_stream</span> <span class='id identifier rubyid_stream'>stream</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="twitter_converter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>twitter_converter</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Starts the Twitter Converter
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'kermitpfc.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_twitter_converter'>twitter_converter</span>
+
+  <span class='id identifier rubyid_dao'>dao</span> <span class='op'>=</span> <span class='const'>DAO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter</span><span class='tstring_end'>'</span></span>
+
+  <span class='kw'>while</span> <span class='kw'>true</span>
+
+    <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_get_status'>get_status</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Status retrieved</span><span class='tstring_end'>'</span></span>
+
+    <span class='kw'>while</span> <span class='id identifier rubyid_status'>status</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+
+      <span class='id identifier rubyid_tc'>tc</span> <span class='op'>=</span> <span class='const'>TwitterConverter</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+      <span class='id identifier rubyid_usmf'>usmf</span> <span class='op'>=</span> <span class='id identifier rubyid_tc'>tc</span><span class='period'>.</span><span class='id identifier rubyid_to_usmf'>to_usmf</span> <span class='id identifier rubyid_status'>status</span>
+
+      <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='id identifier rubyid_usmf'>usmf</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Published</span><span class='tstring_end'>'</span></span>
+
+      <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_get_status'>get_status</span>
+
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>All the statuses were been sent</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>10</span>
+
+  <span class='kw'>end</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Aug  5 23:18:48 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

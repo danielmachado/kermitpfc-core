@@ -2,16 +2,18 @@ require 'redis'
 require 'em-websocket'
 require 'logger'
 
+# WebSocket clients array
 SOCKETS = []
 
 # @author Daniel Machado Fernandez
+# @version 1.0
 #
-# WebSocket Server where the {#USMF} messages will be published
+# WebSocket Server where the USMF messages will be published
 class WebSocketServer
 
   # Configures the WebSocket to works in test mode (path controversia)
   #
-  # @param [Boolean] true if you are using rspec
+  # @param test [Boolean] true if you are using rspec
   def initialize(test=false)
     if(test==false)
           @logger = Logger.new('./log/log.txt','monthly')

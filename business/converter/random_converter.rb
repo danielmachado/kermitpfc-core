@@ -7,13 +7,14 @@ require_relative '../../model/USMF/to_user'
 require_relative '../../model/USMF/user'
 
 # @author Daniel Machado Fernandez
+# @version 1.0
 #
-# Self implementation from the {#Converter} to work it with the {#RandomPhraseGenerator}
+# Self implementation from the Converter to work it with the Random Phrase Generator
 class RandomConverter < Converter
 
       # Initialices the params for the logger
       #
-      # @param [Boolean] true if you are using rspec (path controversia)
+      # @param test [Boolean] true if you are using rspec (path controversia)
       def initialize(test=false)
             @test = test
             if(@test==false)
@@ -25,8 +26,8 @@ class RandomConverter < Converter
 
 	# Field to field parsing from status to a USMF
 	#
-      # @param [String] the phrase from the {#RandomPhraseGenerator}
-      # @return [USMF] the resultant message
+      # @param status [String] the phrase from the Random Phrase Generator
+      # @return usmf [USMF] the resultant message
       def to_usmf status
             @logger.debug("Start the random parse")
 		usmf = USMF.new @test

@@ -1,0 +1,967 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: DAO
+  
+    &mdash; Documentation by YARD 0.8.2.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (D)</a> &raquo;
+    
+    
+    <span class="title">DAO</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: DAO
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">DAO</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">helper/DAO.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Data Access Object to manage the persistence layer of the app
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+Daniel Machado Fernandez
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Version:</p>
+<ul class="version">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+1.0
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#config-instance_method" title="#config (instance method)">- (Object) <strong>config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute config.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#db-instance_method" title="#db (instance method)">- (Object) <strong>db</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute db.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute type.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect_database-instance_method" title="#connect_database (instance method)">- (Object) <strong>connect_database</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Connects to a redis database.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_status-instance_method" title="#get_status (instance method)">- (Object) <strong>get_status</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieves the next status that were saved in the database.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (DAO) <strong>initialize</strong>(type, mode = false) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Config the DAO defining the Stream and the correct params for testing.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#publish-instance_method" title="#publish (instance method)">- (Object) <strong>publish</strong>(usmf) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Publish a message in the websocket server.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save_status-instance_method" title="#save_status (instance method)">- (Object) <strong>save_status</strong>(status) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Persists the status into the database.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">- (Object) <strong>size</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the size of the database.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="DAO (class)">DAO</a></span></tt>) <strong>initialize</strong>(type, mode = false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Config the DAO defining the Stream and the correct params for testing
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+type of the Data Stream to choose the correct database
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mode</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+for test purpouses (path controversia). true if you are using rspec
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_mode'>mode</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
+
+	<span class='ivar'>@type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
+
+	<span class='kw'>if</span> <span class='id identifier rubyid_mode'>mode</span> <span class='op'>==</span> <span class='kw'>false</span>
+		<span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+		<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting DAO...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+		<span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
+	<span class='kw'>else</span>
+		<span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+		<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting DAO...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+		<span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
+	<span class='kw'>end</span>
+	
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> DAO in </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_mode'>mode</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> mode</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>config loaded OK</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_connect_database'>connect_database</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="config=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="config-instance_method">
+  
+    - (<tt>Object</tt>) <strong>config</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute config
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_config'>config</span>
+  <span class='ivar'>@config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="db=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="db-instance_method">
+  
+    - (<tt>Object</tt>) <strong>db</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute db
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_db'>db</span>
+  <span class='ivar'>@db</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="type=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>type</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute type
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="connect_database-instance_method">
+  
+    - (<tt>Object</tt>) <strong>connect_database</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Connects to a redis database
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connect_database'>connect_database</span>
+	<span class='ivar'>@db</span> <span class='op'>=</span> <span class='const'>Redis</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+	
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>New instance for Redis</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	
+	<span class='ivar'>@db</span> <span class='op'>=</span> <span class='const'>Redis</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span>
+		<span class='symbol'>:db</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+		<span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>host</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+		<span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>port</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+		<span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+	<span class='rparen'>)</span>
+	
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Redis connect OK</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_status-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_status</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieves the next status that were saved in the database
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_status'>get_status</span> 
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getting status</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_rpop'>rpop</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
+	<span class='id identifier rubyid_status'>status</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="publish-instance_method">
+  
+    - (<tt>Object</tt>) <strong>publish</strong>(usmf) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Publish a message in the websocket server
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>usmf</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="USMF.html" title="USMF (class)">USMF</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+a message to publish
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_publish'>publish</span> <span class='id identifier rubyid_usmf'>usmf</span>
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Publishing</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ws</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_usmf'>usmf</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save_status-instance_method">
+  
+    - (<tt>Object</tt>) <strong>save_status</strong>(status) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Persists the status into the database
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>status</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the status to persist it
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save_status'>save_status</span> <span class='id identifier rubyid_status'>status</span>
+	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_rpush'>rpush</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_status'>status</span>
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Status saved</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="size-instance_method">
+  
+    - (<tt>Object</tt>) <strong>size</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the size of the database
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
+	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getting size</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_llen'>llen</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Aug  5 23:18:48 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
