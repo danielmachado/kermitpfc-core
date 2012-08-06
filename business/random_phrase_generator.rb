@@ -6,7 +6,7 @@ class RandomPhraseGenerator
 
 	# Generates a random phrase
 	#
-	# @return phrase [String] a random phrase
+	# @return [String] a random phrase
 	def generate
 
 		@phrase = ["12453243@juanito@Poesia es la union de dos palabras que uno nunca supuso que pudieran juntarse, y que forman algo asi como un misterio.",

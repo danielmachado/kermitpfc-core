@@ -7,6 +7,7 @@
 				con = document.getElementById("console");
 				con.innerHTML += evt.data;
 				con.innerHTML += '<br />';
+				con.innerHTML += '<hr />';
 			}
 			websocket = new WebSocket("ws://0.0.0.0:8000/websocket");
 			websocket.onmessage = function(evt) { onMessage(evt); };

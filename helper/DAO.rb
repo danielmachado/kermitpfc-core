@@ -7,8 +7,16 @@ require 'logger'
 #
 # Data Access Object to manage the persistence layer of the app
 class DAO
-
-	attr_accessor :config,:type, :db
+	# @!attribute config 
+	# @return [File] File with the params of the app
+	attr_accessor :config
+	# @!attribute type
+	# @return [String] Type of the stream to identify the database
+	attr_accessor :type
+	# @!attribute db
+	# @return [Redis] An instance from a Redis DB with the redis gem
+	# @see http://rubydoc.info/gems/redis/3.0.1/frames
+	attr_accessor :db
 
 	# Config the DAO defining the Stream and the correct params for testing
 	#
@@ -18,7 +26,7 @@ class DAO
 
 		@type = type
 
-		if mode == false
+		if mode == true
 			@logger = Logger.new('../log/log.txt','monthly')
 			@logger.debug('Starting DAO...')
 			@config = YAML::load( File.open( '../config.yml' ) )
@@ -28,7 +36,7 @@ class DAO
 			@config = YAML::load( File.open( 'config.yml' ) )
 		end
 		
-		@logger.info(type + " DAO in " + mode + " mode")
+		@logger.info(type + " DAO in " + mode.to_s + " mode")
 
 		@logger.info("config loaded OK")
 		connect_database
@@ -53,7 +61,7 @@ class DAO
 
 	# Retrieves the next status that were saved in the database
 	#
-	# @return status [String] the status from the Adapter
+	# @return [String] the status from the Adapter
 	def get_status 
 		@logger.debug("getting status")
 		status = @db.rpop @config["redis"][type]
@@ -70,7 +78,7 @@ class DAO
 
 	# Returns the size of the database
 	#
-	# @return size [Integer] the size (items) of the database
+	# @return [Integer] the size (items) of the database
 	def size
 		@logger.debug("getting size")
 		@db.llen @config["redis"][type]

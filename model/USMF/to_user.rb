@@ -8,7 +8,7 @@ class ToUser
 
 	# Unify the fields into a string
   	#
-  	# @return res [String] resultant string
+  	# @return [String] resultant string
 	def to_s
 		res = "\nname: " + name.to_s + "\nid: " + id.to_s + "\nservice: " + service.to_s + "\ntitle: " + title.to_s + "\nthumbnail: " + thumbnail.to_s + "\nhref: " + href.to_s
 		res
@@ -16,7 +16,7 @@ class ToUser
 	
 	# Unify the fields into a hash
 	#
-	# @return res [Hash] resultant hash
+	# @return [Hash] resultant hash
 	def to_hash
 		res = {
 				"name" => name,

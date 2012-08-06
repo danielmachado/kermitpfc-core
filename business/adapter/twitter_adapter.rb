@@ -22,7 +22,7 @@ class TwitterAdapter < Adapter
 		end
 		@logger.info('Starting TwitterAdapter...')
 		@dao = DAO.new 'twitter', test
-		@logger.info('Database started in ' + test + ' mode')
+		@logger.info('Database started in ' + test.to_s + ' mode')
 
 	end
 

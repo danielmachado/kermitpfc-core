@@ -27,7 +27,7 @@ class RandomConverter < Converter
 	# Field to field parsing from status to a USMF
 	#
       # @param status [String] the phrase from the Random Phrase Generator
-      # @return usmf [USMF] the resultant message
+      # @return [USMF] the resultant message
       def to_usmf status
             @logger.debug("Start the random parse")
 		usmf = USMF.new @test

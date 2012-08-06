@@ -29,7 +29,7 @@ class TwitterConverter < Converter
     # Field to field parsing to become a tweet into a USMF message
     #
     # @param status [String] the tweet previously retrieved
-    # @return usmf [USMF] the resultant message
+    # @return [USMF] the resultant message
 	def to_usmf status
 
 		@logger.debug("Starting tweet parse")

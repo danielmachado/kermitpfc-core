@@ -11,24 +11,27 @@ require 'yaml'
 # @version 1.0
 #
 # Masterclass that adapts the rakefile into a class to use the commander gem
+# @see http://rubydoc.info/gems/commander/4.1.2/frames
 class KermitPFC
 
   # Load the config file
   def initialize
 
-    config = YAML::load( File.open( 'config.yml' ) )
-    
+    config = YAML::load( File.open( './config.yml' ) )
+    puts 'config charged'
     
     begin
-    
+      puts 'pooling'
       pool = []
       pool << Thread.new { initialize_websocket_server }
-
+      puts 'websocket started'
       for i in 1..config["twitter"]["streams"]
+
+        puts 'adding adapters'
         pool << Thread.new { twitter_adapter i }
         sleep 1
       end
-
+      puts 'adapters added'
       
       pool << Thread.new { twitter_converter }
 
