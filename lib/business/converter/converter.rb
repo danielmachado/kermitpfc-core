@@ -10,13 +10,10 @@ class Converter
 	# Initializes the Converter class
 	# 
 	# @raise [Exception] if the method hasn't been implemented yet
-	# @param test [Boolean] true if you are using rspec (path controversia)
-	def initialize(test=false)
-		if(test==false)
-			@logger = Logger.new('./log/log.txt','monthly')
-		else
-			@logger = Logger.new('../log/log.txt','monthly')
-		end
+	def initialize
+		
+		@logger = Logger.new('../log/log.txt','monthly')
+
 		@logger.fatal('The method initialize in Converter must be implemented')
 		raise 'This method must be implemented'
 	end
@@ -27,10 +24,12 @@ class Converter
 	# @param status [String] status retrieved and saved previously in the Adapter
 	# @return [USMF] the resultant USMF message
 	def to_usmf status
-		@logger = Logger.new('./log/log.txt','monthly')
+
+		@logger = Logger.new('../log/log.txt','monthly')
 		@logger.fatal('The method to_usmf in Converter must be implemented')
+
 		raise 'This method must be implemented'
-		nil
+
 	end
 
 end

@@ -12,14 +12,9 @@ SOCKETS = []
 class WebSocketServer
 
   # Configures the WebSocket to works in test mode (path controversia)
-  #
-  # @param test [Boolean] true if you are using rspec
-  def initialize(test=false)
-    if(test==false)
-          @logger = Logger.new('./log/log.txt','monthly')
-    else
-          @logger = Logger.new('../log/log.txt','monthly')
-    end
+  def initialize
+
+    @logger = Logger.new('../log/log.txt','monthly')
 
     @logger.info("Starting WebSocketServer...")
   

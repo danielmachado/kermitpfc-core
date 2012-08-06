@@ -12,14 +12,9 @@ class USMF
   :category,:duration,:likes,:dislikes,:favorites,:comments,:rates,:rating,:min_rating,:max_rating 
 
   # Changes the path from if you are using rspec (path controversia)
-  #
-  # @param test [Boolean] true if you are using the rspec mode
-  def initialize(test=false)
-    if(test==false)
-      @logger = Logger.new('./log/log.txt','monthly')
-    else
-      @logger = Logger.new('../log/log.txt','monthly')
-    end
+  def initialize
+  
+    @logger = Logger.new('../log/log.txt','monthly')
 
   end
 

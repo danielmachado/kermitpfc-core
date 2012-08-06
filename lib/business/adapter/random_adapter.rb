@@ -11,15 +11,11 @@ require_relative "../../helper/DAO"
 class RandomAdapter < Adapter
 
 	# Initializes the Random Adapter class with the dao parameters
-	# 
-	# @param test [Boolean] true if you are using rspec
-	def initialize (test=false)
-		if(test==false)
-			@logger = Logger.new('./log/log.txt','monthly')
-		else
-			@logger = Logger.new('../log/log.txt','monthly')
-		end
-		@dao = DAO.new 'random', test
+	def initialize
+		
+		@logger = Logger.new('../log/log.txt','monthly')
+	
+		@dao = DAO.new 'random'
 		@logger.debug('Starting RandomAdapter...')
 
 	end

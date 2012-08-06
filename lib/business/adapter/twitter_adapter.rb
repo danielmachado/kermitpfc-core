@@ -12,17 +12,12 @@ require_relative "../../helper/DAO"
 class TwitterAdapter < Adapter
 	
 	# Configures the dao with the apropiates params
-	#
-	# @param test [Boolean] true if you use rspec (to solve the path controversia)
-	def initialize (test=false)
-		if(test==false)
-			@logger = Logger.new('./log/log.txt','monthly')
-		else
-			@logger = Logger.new('../log/log.txt','monthly')
-		end
+	def initialize
+
+		@logger = Logger.new('../log/log.txt','monthly')
+		
 		@logger.info('Starting TwitterAdapter...')
-		@dao = DAO.new 'twitter', test
-		@logger.info('Database started in ' + test.to_s + ' mode')
+		@dao = DAO.new 'twitter'
 
 	end
 

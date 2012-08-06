@@ -1,9 +1,9 @@
-require_relative './business/adapter/twitter_adapter'
-require_relative './business/converter/twitter_converter'
-require_relative './business/converter/random_converter'
-require_relative './business/adapter/random_adapter'
-require_relative './helper/DAO'
-require_relative './helper/websocket_server'
+require_relative '../lib/business/adapter/twitter_adapter'
+require_relative '../lib/business/converter/twitter_converter'
+require_relative '../lib/business/converter/random_converter'
+require_relative '../lib/business/adapter/random_adapter'
+require_relative '../lib/helper/DAO'
+require_relative '../lib/helper/websocket_server'
 require 'json'
 require 'yaml'
 
@@ -17,7 +17,7 @@ class KermitPFC
   # Load the config file
   def initialize
 
-    config = YAML::load( File.open( './config.yml' ) )
+    config = YAML::load( File.open( '../config/config.yml' ) )
     puts 'config charged'
     
     begin

@@ -1,10 +1,10 @@
 # twitter_converter_spec.rb
-require_relative '../business/converter/twitter_converter'
-require_relative '../model/USMF/USMF'
-require_relative '../model/USMF/link'
-require_relative '../model/USMF/to_user'
-require_relative '../model/USMF/user'
-require_relative '../helper/DAO'
+require_relative '../lib/business/converter/twitter_converter'
+require_relative '../lib/model/USMF/USMF'
+require_relative '../lib/model/USMF/link'
+require_relative '../lib/model/USMF/to_user'
+require_relative '../lib/model/USMF/user'
+require_relative '../lib/helper/DAO'
 
 describe TwitterConverter, "#to_usmf" do
   
@@ -18,12 +18,12 @@ describe TwitterConverter, "#to_usmf" do
 
 	status.should_not == nil
 		
-	tc = TwitterConverter.new true
+	tc = TwitterConverter.new
 	real = tc.to_usmf status
 
 	#build a usmf with the status, we need to parse the same tweet 
 
-	test = USMF.new true
+	test = USMF.new
 	puts 'Checking Status...'
 	test.service = 'Twitter'
 	real.service.should == test.service

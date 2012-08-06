@@ -1,5 +1,5 @@
 # random_phrase_generator_spec.rb
-require_relative '../business/random_phrase_generator'
+require_relative '../lib/business/random_phrase_generator'
 
 describe RandomPhraseGenerator do
   describe "#generate" do

@@ -1,100 +1,35 @@
-require_relative './business/adapter/twitter_adapter'
-require_relative './business/converter/twitter_converter'
-require_relative './business/converter/random_converter'
-require_relative './business/adapter/random_adapter'
-require_relative './helper/DAO'
-require_relative './helper/websocket_server'
-require_relative './helper/websocket_client'
-require 'json'
+# encoding: utf-8
+require 'rubygems'
+require 'bundler'
 
-task :default => [:initialize_websocket_server]
+begin
+	Bundler.setup(:default,:development)
+rescue Bundler::BundlerError => e
+	$stderr.puts e.message
+	$stderr.puts 'first, execute bundle install'
+	exit e.status_code
+end
 
-desc "Starts the WebSocket server"
-task :initialize_websocket_server do
+require 'rake'
+require 'jeweler'
 
-	ws = WebSocketServer.new
-	ws.start
+Jeweler::Tasks.new do |gem|
+
+# gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "kermit"
+  gem.homepage = "http://github.com/danielmachado/kermitpfc-core"
+  gem.summary = %Q{Allows to retrieve unified info from diferent Data Streams}
+  gem.description = %Q{Gem for retrieve info for data mining purpouses}
+  gem.email = "daniel.machado.fernandez@gmail.com"
+  gem.authors = ["Daniel Machado Fernandez"]
+  # dependencies defined in Gemfile
 
 end
 
-desc "Starts the WebSocket client"
-task :initialize_websocket_client => [:initialize_websocket_server] do
-	
-	wsc = WebSocketClient.new
-	wsc.start
+Jeweler::RubygemsDotOrgTasks.new
 
-end
+require 'rspec/core/rake_task'
 
-desc "Retrieves tweets from the Twitter Streaming API"
-task :twitter_adapter, :stream do |t, args|
-	
-	ta = TwitterAdapter.new
-	ta.connect_stream args[:stream]
-	
-end
+RSpec::Core::RakeTask.new(:spec)
 
-desc "Retrieves random phrases from a RPG"
-task :random_adapter, :stream do |t, args|
-
-	ra = RandomAdapter.new
-	ra.connect_stream args[:stream]
-
-end
-
-desc "Converts tweets into messages whose are catched from redis, then they're converted into Atom and finally they're delivered"
-task :twitter_converter do
-
-	dao = DAO.new 'twitter'
-
-	while true
-
-		status = dao.get_status
-		puts 'Status retrieved'
-
-		while status != nil
-			
-			tc = TwitterConverter.new
-			usmf = tc.to_usmf status
-
-			dao.publish usmf.to_hash.to_json
-			puts 'Publishing'
-			
-			status = dao.get_status
-
-		end
-
-		puts 'All the statuses were been sent'
-		sleep 10
-	
-	end
-
-end
-
-desc "Converts random phrases into messages"
-task :random_converter do
-
-	dao = DAO.new 'random'
-	
-	while true
-		
-		status = dao.get_status
-		puts 'Status retrieved'
-		
-		while status != nil
-		
-			rc = RandomConverter.new
-			usmf = rc.to_usmf status
-			
-			dao.publish usmf.to_hash.to_json
-			puts 'Publishing'
-			
-			status = dao.get_status
-		
-		end
-
-		puts 'All the statuses were been sent'
-		sleep 10
-
-	end
-
-end
+task :default => :spec

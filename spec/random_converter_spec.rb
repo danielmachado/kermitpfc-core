@@ -1,29 +1,29 @@
 # random_converter_spec.rb
 
-require_relative '../business/converter/random_converter'
-require_relative '../model/USMF/USMF'
-require_relative '../model/USMF/link'
-require_relative '../model/USMF/to_user'
-require_relative '../model/USMF/user'
-require_relative '../helper/DAO'
+require_relative '../lib/business/converter/random_converter'
+require_relative '../lib/model/USMF/USMF'
+require_relative '../lib/model/USMF/link'
+require_relative '../lib/model/USMF/to_user'
+require_relative '../lib/model/USMF/user'
+require_relative '../lib/helper/DAO'
 
 describe RandomConverter, "#to_usmf" do
 
   it "returns a usmf that should be equals to the test_usmf" do
 
-    dao = DAO.new 'random', true
+    dao = DAO.new 'random'
 
     status = dao.db.lrange 'random', 0,0
     puts 'Status retrieved'
 
     status.should_not == nil
 
-    rc = RandomConverter.new true
+    rc = RandomConverter.new
     real = rc.to_usmf status[0]
 
     #build a usmf with the status, we need to parse the same phrase
 
-    test = USMF.new true
+    test = USMF.new
     puts 'Checking Status...'
     test.service = 'Random'
     real.service.should == test.service

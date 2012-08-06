@@ -6,17 +6,13 @@ require 'logger'
 # You must implement this class to adapt your data stream in our framework
 class Adapter
 
-	# Initializes the Adapter, to test it, it is necessary to indicate it
+	# Initializes the Adapter to run the logger
 	#
 	# @raise [Exception] if the method hasn't been implemented yet
-	# @param test [Boolean] if the method is used with a param, it must be true to test 
-	def initialize (test=false)
-		if(test==false)
-			@logger = Logger.new('./log/log.txt','monthly')
-		else
-			@logger = Logger.new('../log/log.txt','monthly')
-		end
-	
+	def initialize
+		
+		@logger = Logger.new('../log/log.txt','monthly')
+		
 		@logger.fatal('The method initialize in Adapter must be implemented')
 		raise 'This method must be implemented'
 	

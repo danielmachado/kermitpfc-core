@@ -14,23 +14,20 @@ class RandomConverter < Converter
 
       # Initialices the params for the logger
       #
-      # @param test [Boolean] true if you are using rspec (path controversia)
-      def initialize(test=false)
-            @test = test
-            if(@test==false)
-                  @logger = Logger.new('./log/log.txt','monthly')
-            else
-                  @logger = Logger.new('../log/log.txt','monthly')
-            end
+      def initialize
+
+            @logger = Logger.new('../log/log.txt','monthly')
+      
       end
 
-	# Field to field parsing from status to a USMF
+	# Field to field parsing from status to a USMF message
 	#
       # @param status [String] the phrase from the Random Phrase Generator
       # @return [USMF] the resultant message
       def to_usmf status
+
             @logger.debug("Start the random parse")
-		usmf = USMF.new @test
+		usmf = USMF.new
 		user = User.new
 
 		x = status.split('@')
