@@ -1,10 +1,11 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
 group :development do
-	gem 'airbrake'
-	gem 'rspec'	
-	gem 'yard'
-	gem 'jeweler'
+  gem "rdoc", "~> 3.12"
+  gem "jeweler", "~> 1.8.4"
+  gem 'airbrake'
+  gem 'rspec'	
+  gem 'yard'
 end
 
 gem 'rake'

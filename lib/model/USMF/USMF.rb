@@ -1,5 +1,5 @@
-require 'logger'
 require_relative './user'
+require_relative '../../logging'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
@@ -8,15 +8,10 @@ require_relative './user'
 # @see https://github.com/Tawlk/hyve/wiki/Unified-Social-Media-Format-(USMF)
 class USMF
 	
+  include Logging
+
   attr_accessor :service,:user,:to_users,:links,:id,:geo,:application,:location,:date,:source,:text,:description,:keywords,
   :category,:duration,:likes,:dislikes,:favorites,:comments,:rates,:rating,:min_rating,:max_rating 
-
-  # Changes the path from if you are using rspec (path controversia)
-  def initialize
-  
-    @logger = Logger.new('../log/log.txt','monthly')
-
-  end
 
   # Unify the fields into a string
   #
@@ -64,7 +59,7 @@ class USMF
     rescue
     
       res["user"] = nil
-      @logger.error("A corrupt user was found")
+      logger.error("A corrupt user was found")
     
     end
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require './kermitpfc.rb'
+require_relative '../lib/logging'
 require 'commander/import'
 
 program :name, 'kermit'
@@ -15,6 +15,6 @@ command :start do |c|
   c.syntax = 'kermit start'
   c.description = 'Start the websocket server which is the responsable to distribute the USMFs to the data miners, retrieve new statuses from the Streams, converts it in USMF and publish it on the websocket.'
   c.action do |args, options|
-    k = KermitPFC.new
+    Logging::KermitPFC.new
   end
 end

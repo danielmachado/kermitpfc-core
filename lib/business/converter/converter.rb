@@ -1,4 +1,4 @@
-require 'logger'
+require_relative '../../logging'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
@@ -7,16 +7,7 @@ require 'logger'
 # Abstract class that must be implemented to transform a specifical status from a Stream into a USMF standard message 
 class Converter
 
-	# Initializes the Converter class
-	# 
-	# @raise [Exception] if the method hasn't been implemented yet
-	def initialize
-		
-		@logger = Logger.new('../log/log.txt','monthly')
-
-		@logger.fatal('The method initialize in Converter must be implemented')
-		raise 'This method must be implemented'
-	end
+	include Logging
 
 	# Parses a status into a USMF message
 	# 
@@ -25,9 +16,7 @@ class Converter
 	# @return [USMF] the resultant USMF message
 	def to_usmf status
 
-		@logger = Logger.new('../log/log.txt','monthly')
-		@logger.fatal('The method to_usmf in Converter must be implemented')
-
+		logger.fatal('The method to_usmf in Converter must be implemented')
 		raise 'This method must be implemented'
 
 	end

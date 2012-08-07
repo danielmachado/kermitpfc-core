@@ -1,10 +1,13 @@
 require 'em-http'
+require_relative '../logging'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
 #
 # A WebSocket client to help testing the WebSocket Server
 class WebSocketClient
+
+  include Logging
 
   # Starts the WebSocket client to consume the published info in the WebSocket Server
   def start
@@ -16,7 +19,7 @@ class WebSocketClient
       http = EventMachine::HttpRequest.new("ws://0.0.0.0:8000/websocket").get :timeout => 0
 
       http.errback do
-        puts "oops, error"
+        logger.error "something was wrong in the websocket_client"
       end
 
       http.callback do

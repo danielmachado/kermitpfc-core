@@ -1,11 +1,11 @@
-require_relative '../lib/business/adapter/twitter_adapter'
-require_relative '../lib/business/converter/twitter_converter'
-require_relative '../lib/business/converter/random_converter'
-require_relative '../lib/business/adapter/random_adapter'
-require_relative '../lib/helper/DAO'
-require_relative '../lib/helper/websocket_server'
+require_relative 'business/adapter/twitter_adapter'
+require_relative 'business/converter/twitter_converter'
+require_relative 'business/converter/random_converter'
+require_relative 'business/adapter/random_adapter'
+require_relative 'helper/DAO'
+require_relative 'helper/websocket_server'
+require_relative './logging'
 require 'json'
-require 'yaml'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
@@ -16,16 +16,13 @@ class KermitPFC
 
   # Load the config file
   def initialize
-
-    config = YAML::load( File.open( '../config/config.yml' ) )
-    puts 'config charged'
     
     begin
       puts 'pooling'
       pool = []
       pool << Thread.new { initialize_websocket_server }
       puts 'websocket started'
-      for i in 1..config["twitter"]["streams"]
+      for i in 1..Logging::config["twitter"]["streams"]
 
         puts 'adding adapters'
         pool << Thread.new { twitter_adapter i }

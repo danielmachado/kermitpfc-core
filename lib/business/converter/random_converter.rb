@@ -1,10 +1,9 @@
-require 'logger'
-
 require_relative './converter'
 require_relative '../../model/USMF/USMF'
 require_relative '../../model/USMF/link'
 require_relative '../../model/USMF/to_user'
 require_relative '../../model/USMF/user'
+require_relative '../../logging'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
@@ -12,13 +11,7 @@ require_relative '../../model/USMF/user'
 # Self implementation from the Converter to work it with the Random Phrase Generator
 class RandomConverter < Converter
 
-      # Initialices the params for the logger
-      #
-      def initialize
-
-            @logger = Logger.new('../log/log.txt','monthly')
-      
-      end
+      include Logging
 
 	# Field to field parsing from status to a USMF message
 	#
@@ -26,7 +19,7 @@ class RandomConverter < Converter
       # @return [USMF] the resultant message
       def to_usmf status
 
-            @logger.debug("Start the random parse")
+            logger.debug("Start the random parse")
 		usmf = USMF.new
 		user = User.new
 
@@ -41,7 +34,7 @@ class RandomConverter < Converter
 
       	usmf.links = []
       	usmf.to_users = []
-            @logger.debug("Finish the random parse")
+            logger.debug("Finish the random parse")
 		usmf
 		
 	end

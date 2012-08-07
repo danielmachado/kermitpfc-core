@@ -90,11 +90,15 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">helper/DAO.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/helper/DAO.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -146,39 +150,20 @@ Daniel Machado Fernandez
 </ul>
 
 </div>
+  <h2>Constant Summary</h2>
+  
 
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Logging.html#KermitPFC-constant" title="Logging::KermitPFC (constant)">Logging::KermitPFC</a></span></p>
 
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#config-instance_method" title="#config (instance method)">- (File) <strong>config</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-File with the params of the app.
-</p>
-</div></span>
-  
-</li>
-
     
       <li class="public ">
   <span class="summary_signature">
@@ -302,7 +287,7 @@ Retrieves the next status that were saved in the database.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (DAO) <strong>initialize</strong>(type, mode = false) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (DAO) <strong>initialize</strong>(type) </a>
     
 
     
@@ -319,7 +304,7 @@ Retrieves the next status that were saved in the database.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Config the DAO defining the Stream and the correct params for testing.
+Config the DAO defining the Data Stream.
 </p>
 </div></span>
   
@@ -404,13 +389,24 @@ Returns the size of the database.
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Logging.html#config-class_method" title="Logging.config (method)">config</a></span>, <span class='object_link'><a href="Logging.html#config-instance_method" title="Logging#config (method)">#config</a></span>, <span class='object_link'><a href="Logging.html#logger-class_method" title="Logging.logger (method)">logger</a></span>, <span class='object_link'><a href="Logging.html#logger-instance_method" title="Logging#logger (method)">#logger</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="DAO (class)">DAO</a></span></tt>) <strong>initialize</strong>(type, mode = false) 
+    - (<tt><span class='object_link'><a href="" title="DAO (class)">DAO</a></span></tt>) <strong>initialize</strong>(type) 
   
 
   
@@ -419,7 +415,7 @@ Returns the size of the database.
 </h3><div class="docstring">
   <div class="discussion">
     <p>
-Config the DAO defining the Stream and the correct params for testing
+Config the DAO defining the Data Stream
 </p>
 
 
@@ -446,25 +442,6 @@ type of the Data Stream to choose the correct database
       
     </li>
   
-    <li>
-      
-        <span class='name'>mode</span>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>false</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-for test purpouses (path controversia). true if you are using rspec
-</p>
-</div>
-      
-    </li>
-  
 </ul>
 
 
@@ -474,6 +451,7 @@ for test purpouses (path controversia). true if you are using rspec
       <pre class="lines">
 
 
+24
 25
 26
 27
@@ -484,37 +462,20 @@ for test purpouses (path controversia). true if you are using rspec
 32
 33
 34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44</pre>
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 24</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_mode'>mode</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
 
 	<span class='ivar'>@type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
 
-	<span class='kw'>if</span> <span class='id identifier rubyid_mode'>mode</span> <span class='op'>==</span> <span class='kw'>false</span>
-		<span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-		<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting DAO...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-		<span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
-	<span class='kw'>else</span>
-		<span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-		<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting DAO...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-		<span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
-	<span class='kw'>end</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting DAO...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 	
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> DAO in </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_mode'>mode</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> mode</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> DAO in </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>config loaded OK</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>config loaded OK</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_connect_database'>connect_database</span>
 
 <span class='kw'>end</span></pre>
@@ -529,72 +490,9 @@ for test purpouses (path controversia). true if you are using rspec
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="config=-instance_method"></span>
-      <div class="method_details first">
-  <h3 class="signature first" id="config-instance_method">
-  
-    - (<tt>File</tt>) <strong>config</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>
-File with the params of the app
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>File</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-File with the params of the app
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-12
-13
-14</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 12</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_config'>config</span>
-  <span class='ivar'>@config</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
       <span id="db=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="db-instance_method">
+      <div class="method_details first">
+  <h3 class="signature first" id="db-instance_method">
   
     - (<tt>Redis</tt>) <strong>db</strong> 
   
@@ -651,7 +549,7 @@ An instance from a Redis DB with the redis gem
 21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_db'>db</span>
   <span class='ivar'>@db</span>
@@ -709,12 +607,12 @@ Type of the stream to identify the database
       <pre class="lines">
 
 
+14
 15
-16
-17</pre>
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
   <span class='ivar'>@type</span>
@@ -758,37 +656,37 @@ Connects to a redis database
       <pre class="lines">
 
 
+38
+39
+40
+41
+42
+43
+44
+45
+46
 47
 48
 49
 50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect_database'>connect_database</span>
 	<span class='ivar'>@db</span> <span class='op'>=</span> <span class='const'>Redis</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-	
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>New instance for Redis</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>New instance for Redis</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 	
 	<span class='ivar'>@db</span> <span class='op'>=</span> <span class='const'>Redis</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span>
-		<span class='symbol'>:db</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-		<span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>host</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-		<span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>port</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
-		<span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+		<span class='symbol'>:db</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+		<span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>host</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+		<span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>port</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+		<span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
 	<span class='rparen'>)</span>
 	
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Redis connect OK</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Redis connect OK</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -841,18 +739,18 @@ the status from the Adapter
       <pre class="lines">
 
 
-65
-66
-67
-68
-69</pre>
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_status'>get_status</span> 
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getting status</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-	<span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_rpop'>rpop</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getting status</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_rpop'>rpop</span> <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
 	<span class='id identifier rubyid_status'>status</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -908,17 +806,17 @@ a message to publish
       <pre class="lines">
 
 
-90
-91
-92
-93
-94</pre>
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publish'>publish</span> <span class='id identifier rubyid_usmf'>usmf</span>
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Publishing</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Publishing</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ws</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_usmf'>usmf</span>
 
 <span class='kw'>end</span></pre>
@@ -975,17 +873,17 @@ the status to persist it
       <pre class="lines">
 
 
-74
-75
-76
-77</pre>
+65
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_save_status'>save_status</span> <span class='id identifier rubyid_status'>status</span>
-	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_rpush'>rpush</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_status'>status</span>
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Status saved</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_rpush'>rpush</span> <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_status'>status</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Status saved</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1038,17 +936,17 @@ the size (items) of the database
       <pre class="lines">
 
 
-82
-83
-84
-85</pre>
+73
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'helper/DAO.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/helper/DAO.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getting size</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_llen'>llen</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>getting size</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+	<span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_llen'>llen</span> <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>redis</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1060,7 +958,7 @@ the size (items) of the database
 </div>
 
     <div id="footer">
-  Generated on Mon Aug  6 11:00:34 2012 by
+  Generated on Tue Aug  7 19:53:32 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

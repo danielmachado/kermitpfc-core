@@ -90,11 +90,15 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">business/adapter/adapter.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/business/adapter/adapter.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -154,7 +158,16 @@ Daniel Machado Fernandez
   <p class="children"><span class='object_link'><a href="RandomAdapter.html" title="RandomAdapter (class)">RandomAdapter</a></span>, <span class='object_link'><a href="TwitterAdapter.html" title="TwitterAdapter (class)">TwitterAdapter</a></span></p>
 </div>
 
+  <h2>Constant Summary</h2>
+  
 
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Logging.html#KermitPFC-constant" title="Logging::KermitPFC (constant)">Logging::KermitPFC</a></span></p>
 
 
 
@@ -196,7 +209,7 @@ Connects to a particular data stream.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Adapter) <strong>initialize</strong>(test = false) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Adapter) <strong>initialize</strong> </a>
     
 
     
@@ -213,7 +226,7 @@ Connects to a particular data stream.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Initializes the Adapter, to test it, it is necessary to indicate it.
+Initializes the Adapter to run the logger.
 </p>
 </div></span>
   
@@ -248,13 +261,24 @@ Persist the status retrieved from the data stream.
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Logging.html#config-class_method" title="Logging.config (method)">config</a></span>, <span class='object_link'><a href="Logging.html#config-instance_method" title="Logging#config (method)">#config</a></span>, <span class='object_link'><a href="Logging.html#logger-class_method" title="Logging.logger (method)">logger</a></span>, <span class='object_link'><a href="Logging.html#logger-instance_method" title="Logging#logger (method)">#logger</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Adapter (class)">Adapter</a></span></tt>) <strong>initialize</strong>(test = false) 
+    - (<tt><span class='object_link'><a href="" title="Adapter (class)">Adapter</a></span></tt>) <strong>initialize</strong> 
   
 
   
@@ -263,37 +287,14 @@ Persist the status retrieved from the data stream.
 </h3><div class="docstring">
   <div class="discussion">
     <p>
-Initializes the Adapter, to test it, it is necessary to indicate it
+Initializes the Adapter to run the logger
 </p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>test</span>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>false</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-if the method is used with a param, it must be true to test
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -320,29 +321,19 @@ if the method hasn&#8217;t been implemented yet
       <pre class="lines">
 
 
-13
 14
 15
 16
 17
 18
-19
-20
-21
-22
-23</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'business/adapter/adapter.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/business/adapter/adapter.rb', line 14</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='lparen'>(</span><span class='id identifier rubyid_test'>test</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
-	<span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_test'>test</span><span class='op'>==</span><span class='kw'>false</span><span class='rparen'>)</span>
-		<span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-	<span class='kw'>else</span>
-		<span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-	<span class='kw'>end</span>
-
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_fatal'>fatal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The method initialize in Adapter must be implemented</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+	
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_fatal'>fatal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The method initialize in Adapter must be implemented</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>This method must be implemented</span><span class='tstring_end'>'</span></span>
 
 <span class='kw'>end</span></pre>
@@ -427,16 +418,16 @@ if the method hasn&#8217;t been implemented yet
       <pre class="lines">
 
 
-29
-30
-31
-32</pre>
+25
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'business/adapter/adapter.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/business/adapter/adapter.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect_stream'>connect_stream</span> <span class='lparen'>(</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>=</span><span class='int'>1</span><span class='rparen'>)</span>
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_fatal'>fatal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The method connect_stream in Adapter must be implemented</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_fatal'>fatal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The method connect_stream in Adapter must be implemented</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>This method must be implemented</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -511,16 +502,16 @@ if the method hasn&#8217;t been implemented yet
       <pre class="lines">
 
 
-38
-39
-40
-41</pre>
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'business/adapter/adapter.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/business/adapter/adapter.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_persist'>persist</span> <span class='id identifier rubyid_status'>status</span>
-	<span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_fatal'>fatal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The method persist in Adapter must be implemented</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_fatal'>fatal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The method persist in Adapter must be implemented</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>This method must be implemented</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
@@ -533,7 +524,7 @@ if the method hasn&#8217;t been implemented yet
 </div>
 
     <div id="footer">
-  Generated on Mon Aug  6 11:00:34 2012 by
+  Generated on Tue Aug  7 19:53:32 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

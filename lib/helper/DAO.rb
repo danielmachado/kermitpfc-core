@@ -1,6 +1,5 @@
 require 'redis'
-require 'yaml'
-require 'logger'
+require_relative '../logging'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
@@ -8,9 +7,7 @@ require 'logger'
 # Data Access Object to manage the persistence layer of the app
 class DAO
 
-	# @!attribute config 
-	# @return [File] File with the params of the app
-	attr_accessor :config
+	include Logging
 
 	# @!attribute type
 	# @return [String] Type of the stream to identify the database
@@ -28,13 +25,11 @@ class DAO
 
 		@type = type
 
-		@logger = Logger.new('../log/log.txt','monthly')
-		@logger.debug('Starting DAO...')
-		@config = YAML::load( File.open( '../config/config.yml' ) )
+		logger.debug('Starting DAO...')
 		
-		@logger.info(type + " DAO in " + type.to_s + " type")
+		logger.info(type + " DAO in " + type.to_s + " type")
 
-		@logger.info("config loaded OK")
+		logger.info("config loaded OK")
 		connect_database
 
 	end
@@ -42,25 +37,25 @@ class DAO
 	# Connects to a redis database
 	def connect_database
 		@db = Redis.new
-		
-		@logger.debug("New instance for Redis")
+
+		logger.debug("New instance for Redis")
 		
 		@db = Redis.connect(
-			:db   => "#{@config["redis"]["db"]}",
-			:host => "#{@config["redis"]["host"]}",
-			:port => @config["redis"]["port"],
-			:password => @config["redis"]["password"]
+			:db   => "#{Logging::config["redis"]["db"]}",
+			:host => "#{Logging::config["redis"]["host"]}",
+			:port => Logging::config["redis"]["port"],
+			:password => Logging::config["redis"]["password"]
 		)
 		
-		@logger.info("Redis connect OK")
+		logger.info("Redis connect OK")
 	end
 
 	# Retrieves the next status that were saved in the database
 	#
 	# @return [String] the status from the Adapter
 	def get_status 
-		@logger.debug("getting status")
-		status = @db.rpop @config["redis"][type]
+		logger.debug("getting status")
+		status = @db.rpop Logging::config["redis"][type]
 		status
 	end
 
@@ -68,23 +63,23 @@ class DAO
 	#
 	# @param status [String] the status to persist it
 	def save_status status
-		@db.rpush @config["redis"][type], status
-		@logger.info("Status saved")
+		@db.rpush Logging::config["redis"][type], status
+		logger.info("Status saved")
 	end
 
 	# Returns the size of the database
 	#
 	# @return [Integer] the size (items) of the database
 	def size
-		@logger.debug("getting size")
-		@db.llen @config["redis"][type]
+		logger.debug("getting size")
+		@db.llen Logging::config["redis"][type]
 	end
 
 	# Publish a message in the websocket server
 	#
 	# @param usmf [USMF] a message to publish 
 	def publish usmf
-		@logger.info("Publishing")
+		logger.info("Publishing")
 		@db.publish 'ws', usmf
 
 	end

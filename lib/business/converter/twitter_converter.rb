@@ -1,4 +1,3 @@
-require 'logger'
 require 'json'
 
 require_relative './converter'
@@ -6,6 +5,7 @@ require_relative '../../model/USMF/USMF'
 require_relative '../../model/USMF/link'
 require_relative '../../model/USMF/to_user'
 require_relative '../../model/USMF/user'
+require_relative '../../logging'
 
 # @author Daniel Machado Fernandez
 # @version 1.0
@@ -13,13 +13,7 @@ require_relative '../../model/USMF/user'
 # Twitter Specification from Converter
 class TwitterConverter < Converter
 
-	# Initialices the logger
-	def initialize(test=false)
-            
-            @logger = Logger.new('../log/log.txt','monthly')
-
-            @logger.debug("Starting TwitterConverter...")
-    end
+	include Logging
 
     # Field to field parsing to become a tweet into a USMF message
     #
@@ -27,14 +21,14 @@ class TwitterConverter < Converter
     # @return [USMF] the resultant message
 	def to_usmf status
 
-		@logger.debug("Starting tweet parse")
+		logger.debug("Starting tweet parse")
 
 		usmf = USMF.new
 		user = User.new
 
 		status = JSON.parse(status)
 		if status.has_key? 'Error'
-			@logger.error("tweet malformed")
+			logger.error("tweet malformed")
 			raise "status malformed"
 		end
 
@@ -161,7 +155,7 @@ class TwitterConverter < Converter
 
 		end
 
-		@logger.debug("Finished tweet parse")
+		logger.debug("Finished tweet parse")
 
 		usmf
 

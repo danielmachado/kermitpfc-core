@@ -1,6 +1,7 @@
 require 'redis'
 require 'em-websocket'
-require 'logger'
+
+require_relative '../logging'
 
 # WebSocket clients array
 SOCKETS = []
@@ -11,12 +12,12 @@ SOCKETS = []
 # WebSocket Server where the USMF messages will be published
 class WebSocketServer
 
+  include Logging
+
   # Configures the WebSocket to works in test mode (path controversia)
   def initialize
 
-    @logger = Logger.new('../log/log.txt','monthly')
-
-    @logger.info("Starting WebSocketServer...")
+    logger.info("Starting WebSocketServer...")
   
   end
   
