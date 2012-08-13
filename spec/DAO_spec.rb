@@ -55,8 +55,6 @@ describe DAO do
 		puts 'Testing Publisher...'
 		dao.publish('Testing a method')
 
-		#TODO start a subscriber and check that it receives the status
-
 		puts 'Publisher OK'
 
 

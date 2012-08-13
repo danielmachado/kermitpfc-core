@@ -4,7 +4,11 @@ redis:
  # you must add keys for your own stream implementations
  host: #address of your Redis-Server 
  port: #port of your Redis-Server
- password:#Redis password
+ password: #Redis password
+#Websocket address to publish the statuses
+websocket:
+ host: #address of your websocket server
+ port: #port of your websocket server
 #for each Stream implementation you must define its specific params.
 twitter:
  streams:#number of streams you want 

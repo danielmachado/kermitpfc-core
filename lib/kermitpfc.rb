@@ -97,7 +97,7 @@ class KermitPFC
       end
 
       puts 'All the statuses were been sent'
-      sleep 10
+      sleep 2
 
     end
 
@@ -126,7 +126,7 @@ class KermitPFC
       end
 
       puts 'All the statuses were been sent'
-      sleep 10
+      sleep 2
 
     end
 
