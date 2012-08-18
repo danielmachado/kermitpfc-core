@@ -7,7 +7,7 @@ describe RandomAdapter do
   describe "#connect_stream" do
     it "returns a status that was retrieved from the RandomPhraseGenerator Stream" do
 
-		dao = DAO.new 'random'
+		dao = DAO.new 'rpg'
 		prev = dao.size
 
 		a = Thread.new { adapter = RandomAdapter.new; adapter.connect_stream; puts 'retrieving...' ;}

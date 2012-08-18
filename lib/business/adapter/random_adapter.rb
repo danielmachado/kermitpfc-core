@@ -14,7 +14,7 @@ class RandomAdapter < Adapter
 	# Initializes the Random Adapter class with the dao parameters
 	def initialize
 		
-		@dao = DAO.new 'random'
+		@dao = DAO.new 'rpg'
 		logger.debug('Starting RandomAdapter...')
 
 	end

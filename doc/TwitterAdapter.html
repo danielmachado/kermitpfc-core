@@ -267,7 +267,7 @@ Saves the tweet into the database.
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Logging.html" title="Logging (module)">Logging</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Logging.html#config-class_method" title="Logging.config (method)">config</a></span>, <span class='object_link'><a href="Logging.html#config-instance_method" title="Logging#config (method)">#config</a></span>, <span class='object_link'><a href="Logging.html#logger-class_method" title="Logging.logger (method)">logger</a></span>, <span class='object_link'><a href="Logging.html#logger-instance_method" title="Logging#logger (method)">#logger</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Logging.html#logger-instance_method" title="Logging#logger (method)">#logger</a></span>, <span class='object_link'><a href="Logging.html#logger-class_method" title="Logging.logger (method)">logger</a></span></p>
 
   
   
@@ -419,22 +419,26 @@ one)
 59
 60
 61
-62</pre>
+62
+63
+64</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/business/adapter/twitter_adapter.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect_stream'>connect_stream</span> <span class='lparen'>(</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>=</span><span class='int'>1</span><span class='rparen'>)</span>
-	
+
 	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>retrieving...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>retrieving... </span><span class='tstring_end'>'</span></span>
+	<span class='id identifier rubyid_track'>track</span> <span class='op'>=</span> <span class='const'>Settings</span><span class='period'>.</span><span class='id identifier rubyid_twitter'>twitter</span><span class='period'>.</span><span class='id identifier rubyid_track'>track</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>track</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_stream'>stream</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
 	<span class='const'>EventMachine</span><span class='op'>::</span><span class='id identifier rubyid_run'>run</span> <span class='lbrace'>{</span>
 
 		<span class='id identifier rubyid_stream'>stream</span> <span class='op'>=</span> <span class='const'>Twitter</span><span class='op'>::</span><span class='const'>JSONStream</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span>
-		   	<span class='symbol'>:path</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/1/statuses/filter.json?track=</span><span class='embexpr_beg'>#{</span><span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>twitter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>track</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>track</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_stream'>stream</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-	    	<span class='symbol'>:auth</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>twitter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>login</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>twitter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pass</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+		   	<span class='symbol'>:path</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/1/statuses/filter.json?track=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_track'>track</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+	    	<span class='symbol'>:auth</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>Settings</span><span class='period'>.</span><span class='id identifier rubyid_twitter'>twitter</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='const'>Settings</span><span class='period'>.</span><span class='id identifier rubyid_twitter'>twitter</span><span class='period'>.</span><span class='id identifier rubyid_pass'>pass</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
 	    	<span class='symbol'>:ssl</span>     <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
-	    	<span class='symbol'>:port</span>    <span class='op'>=&gt;</span> <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>twitter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>port</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+	    	<span class='symbol'>:port</span>    <span class='op'>=&gt;</span> <span class='const'>Settings</span><span class='period'>.</span><span class='id identifier rubyid_twitter'>twitter</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span>
 	  	<span class='rparen'>)</span>
 
 	  	<span class='id identifier rubyid_stream'>stream</span><span class='period'>.</span><span class='id identifier rubyid_each_item'>each_item</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_status'>status</span><span class='op'>|</span>
@@ -513,14 +517,14 @@ tweet retrieved previously
       <pre class="lines">
 
 
-67
-68
 69
 70
-71</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/business/adapter/twitter_adapter.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/business/adapter/twitter_adapter.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_persist'>persist</span> <span class='id identifier rubyid_status'>status</span>
 	
@@ -537,7 +541,7 @@ tweet retrieved previously
 </div>
 
     <div id="footer">
-  Generated on Tue Aug  7 19:53:32 2012 by
+  Generated on Sat Aug 18 16:24:08 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

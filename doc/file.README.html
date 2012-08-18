@@ -62,58 +62,59 @@
     <iframe id="search_frame"></iframe>
 
     <div id="content"><div id='filecontents'><h1>Kermit</h1>
-<h2>What&#8217;s this?</h2>
-<p>
-KermitPFC-core is a framework that can collect information from different
-social networks with data mining purposes.  It also allows different
-streams serve under a common way to treat data as a single social network
-using the USMF form implemented by Tawlk.
-</p>
+
+<h2>What&#39;s this?</h2>
+
+<p>KermitPFC-core is a framework that can collect information from different social networks for data mining purposes. 
+It also allows different streams serve under a common way to treat data as a single social network using the USMF form implemented by Tawlk.</p>
+
 <h2>Intro</h2>
-<p>
-kermitpfc-core is based on a series of classes to be used to ensure proper
-functionality of the social network you want to implement, these classes
-are Adapter to collect social network status, Converter to parse the
-previous status in the USMF model (with their respective classes). To
-facilitate the publish action of USMF, JSON service is used with the help
-of the Redis Pub / Sub module (which implements the core, Redis must be
-installed in server mode).
-</p>
+
+<p>kermitpfc-core is based on a series of classes to be used to ensure proper functionality of the social network you want to implement, these classes are Adapter to collect social network statuses, Converter to parse the previous statuses in the USMF model (with their respective classes). To facilitate the publish action of USMF, JSON service is used with the help of the Redis Pub / Sub module (which implements the core, Redis must be installed in server mode).</p>
+
 <h2>How to use</h2>
-<p>
-KermitPFC-core has got a Twitter implementation for default, to use it:
-</p>
-<p>
-First, you must modify the config.example.yml file with your personal data
-(Redis connection, SocialNetwork credentials, trackwords, &#8230;) and
-rename it with config.yml name.
-</p>
-<p>
-Then, you need have been installed a redis-server database (and actually
-running) 	 	$sudo apt-get install redis-server
-</p>
-<p>
-and a ruby version to launch the application
-</p>
-<p>
-	$sudo apt-get install ruby
-</p>
-<p>
-Finally you only need to change permisions on kermit file 
-</p>
-<p>
-	$chmod 700 kermit
-</p>
-<p>
-and execute it
-</p>
-<p>
-	$./kermit
-</p>
+
+<p>KermitPFC-core has got a Twitter implementation for default and a Random Phrase Generator to mix the statuses, to use it:</p>
+
+<p>First, you must fill the config.example.yml file with your personal data (Redis connection, SocialNetwork credentials, trackwords, ...) you can rename it as you want (config.yml could be a good name).</p>
+
+<p>Then, you need have been installed a redis-server database (and actually running)</p>
+
+<pre class="code bash"><code>$ sudo apt-get install redis-server
+</code></pre>
+
+<p>and a ruby version to launch the application</p>
+
+<pre class="code bash"><code>$ sudo apt-get install ruby
+</code></pre>
+
+<p>Finally you only need to downlad the gem from the source (from github, rubygems,...) and install it</p>
+
+<pre class="code bash"><code>$ gem install kermit
+</code></pre>
+
+<ul>
+<li>maybe you need permisions to install</li>
+</ul>
+
+<p>and execute it</p>
+
+<pre class="code bash"><code>$ kermit [config.yml_path]
+</code></pre>
+
+<p>p.ex</p>
+
+<pre class="code bash"><code>$ kermit ../config/config.yml
+</code></pre>
+
+<p>or</p>
+
+<pre class="code bash"><code>$ kermit config.yml
+</code></pre>
 </div></div>
 
     <div id="footer">
-  Generated on Tue Aug  7 19:53:31 2012 by
+  Generated on Sat Aug 18 16:24:07 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

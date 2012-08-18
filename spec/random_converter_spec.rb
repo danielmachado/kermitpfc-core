@@ -11,15 +11,15 @@ describe RandomConverter, "#to_usmf" do
 
   it "returns a usmf that should be equals to the test_usmf" do
 
-    dao = DAO.new 'random'
+    dao = DAO.new 'rpg'
 
-    status = dao.db.lrange 'random', 0,0
+    status = "12453243@juanito@Poesia es la union de dos palabras que uno nunca supuso que pudieran juntarse, y que forman algo asi como un misterio."
     puts 'Status retrieved'
 
     status.should_not == nil
 
     rc = RandomConverter.new
-    real = rc.to_usmf status[0]
+    real = rc.to_usmf status
 
     #build a usmf with the status, we need to parse the same phrase
 
@@ -27,7 +27,7 @@ describe RandomConverter, "#to_usmf" do
     puts 'Checking Status...'
     test.service = 'Random'
     real.service.should == test.service
-    test.id = '124532435'
+    test.id = '12453243'
     real.id.should == test.id
     test.geo = nil
     real.geo.should == test.geo
@@ -39,7 +39,7 @@ describe RandomConverter, "#to_usmf" do
     real.date.should == test.date
     test.source = nil
     real.source.should == test.source
-    test.text = 'La poesia no tiene tiempo, el que la lee la rescata, la hace presente y luego la regresa a su eternidad.'
+    test.text = 'Poesia es la union de dos palabras que uno nunca supuso que pudieran juntarse, y que forman algo asi como un misterio.'
     real.text.should == test.text
     test.keywords = nil
     real.keywords.should == test.keywords
@@ -67,7 +67,7 @@ describe RandomConverter, "#to_usmf" do
 
     user = User.new
     puts 'Checking User...'
-    user.name = 'angel'
+    user.name = 'juanito'
     real.user.name.should == user.name
     user.real_name = nil
     real.user.real_name.should == user.real_name

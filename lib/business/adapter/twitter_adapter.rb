@@ -25,16 +25,18 @@ class TwitterAdapter < Adapter
 	# 
 	# @param stream [Integer] the number of the stream to identify it (use it when you have got more than one)
 	def connect_stream (stream=1)
-		
+
 		logger.debug('retrieving...')
 		puts 'retrieving... '
+		track = Settings.twitter.track.send("track#{stream}")
+
 		EventMachine::run {
 
 			stream = Twitter::JSONStream.connect(
-			   	:path    => "/1/statuses/filter.json?track=#{Logging::config["twitter"]["track"]["track#{stream}"]}",
-		    	:auth    => "#{Logging::config["twitter"]["login"]}:#{Logging::config["twitter"]["pass"]}",
+			   	:path    => "/1/statuses/filter.json?track=#{track}",
+		    	:auth    => "#{Settings.twitter.login}:#{Settings.twitter.pass}",
 		    	:ssl     => true,
-		    	:port    => Logging::config["twitter"]["port"]
+		    	:port    => Settings.twitter.port
 		  	)
 
 		  	stream.each_item do |status|

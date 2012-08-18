@@ -23,14 +23,14 @@ class WebSocketServer
   
   # Starts the Websocket server and listen the new clients to broadcast the messages
   def start
-    @redis = Redis.new(:host => "#{Logging::config["redis"]["host"]}", :port => Logging::config["redis"]["port"])
+    @redis = Redis.new(:host => "#{Settings.redis.host}", :port => Settings.redis.port)
 
     
     Thread.new do
       EventMachine.run do
-      	puts '='*80, "Starting websockets server at ws://#{Logging::config["websocket"]["host"]} : #{Logging::config["websocket"]["port"]}", '='*80
+      	puts '='*80, "Starting websockets server at ws://#{Settings.websocket.host}:#{Settings.websocket.port}", '='*80
         
-        EventMachine::WebSocket.start(:host => "#{Logging::config["websocket"]["host"]}", :port => Logging::config["websocket"]["port"]) do |ws|
+        EventMachine::WebSocket.start(:host => "#{Settings.websocket.host}", :port => Settings.websocket.port) do |ws|
           ws.onopen do
             
             puts "#{Time.now.strftime('%H:%M:%S')} : Client connected", '-'*80

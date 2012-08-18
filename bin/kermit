@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
+require 'yaml'
 require_relative '../lib/logging'
 require 'commander/import'
 
@@ -12,9 +13,12 @@ program :help, 'Author', 'Daniel Machado Fernandez'
 default_command :start
 
 command :start do |c|
-  c.syntax = 'kermit start'
+  c.syntax = 'kermit start [options]'
   c.description = 'Start the websocket server which is the responsable to distribute the USMFs to the data miners, retrieve new statuses from the Streams, converts it in USMF and publish it on the websocket.'
+  c.option '--path STRING', String, 'path of the config.yml file'
   c.action do |args, options|
-    Logging::KermitPFC.new
+  	 options.default :path => '../config/config.yml'
+  	 Logging::Settings.source options.path
+     Logging::KermitPFC.new
   end
 end

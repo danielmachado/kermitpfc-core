@@ -134,7 +134,17 @@ Daniel Machado Fernandez
   
 </ul>
 
-</div>
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Logging/Settings.html" title="Logging::Settings (class)">Settings</a></span>
+    
+  
+</p>
+
   <h2>Constant Summary</h2>
   
     <dl class="constants">
@@ -176,31 +186,6 @@ its neccessary to build the gem and make it run
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#config-class_method" title="config (class method)">+ (File) <strong>config</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-solve the problem with path controversia in the config file.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#logger-class_method" title="logger (class method)">+ (Logger) <strong>logger</strong> </a>
     
 
@@ -231,31 +216,6 @@ solve the problem with path controversia in the log file.
     </h2>
 
     <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#config-instance_method" title="#config (instance method)">- (File) <strong>config</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-offers the config file to the app.
-</p>
-</div></span>
-  
-</li>
-
       
         <li class="public ">
   <span class="summary_signature">
@@ -292,76 +252,7 @@ offers the logger to the app.
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="config-class_method">
-  
-    + (<tt>File</tt>) <strong>config</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>
-solve the problem with path controversia in the config file
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>File</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the yaml file with the correct path of config.yml
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-38
-39
-40
-41
-42
-43
-44</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/logging.rb', line 38</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span>
-  <span class='kw'>begin</span>
-	  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../config/config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
-  <span class='kw'>rescue</span>
-    <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./config/config.yml</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span> <span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="logger-class_method">
+  <h3 class="signature first" id="logger-class_method">
   
     + (<tt>Logger</tt>) <strong>logger</strong> 
   
@@ -406,18 +297,18 @@ the logger with the correct path of log.txt
       <pre class="lines">
 
 
+23
+24
+25
+26
+27
 28
-29
-30
-31
-32
-33
-34</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/logging.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/logging.rb', line 23</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span> 
   <span class='kw'>begin</span>
   <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>../log/log.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>monthly</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='kw'>rescue</span>
@@ -436,68 +327,7 @@ the logger with the correct path of log.txt
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="config-instance_method">
-  
-    - (<tt>File</tt>) <strong>config</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>
-offers the config file to the app
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>File</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the YAML file to config the app
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-22
-23
-24</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/logging.rb', line 22</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_config'>config</span>
-	<span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="logger-instance_method">
+  <h3 class="signature first" id="logger-instance_method">
   
     - (<tt>Logger</tt>) <strong>logger</strong> 
   
@@ -542,12 +372,12 @@ the logger
       <pre class="lines">
 
 
-16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/logging.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/logging.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span>
   <span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span>
@@ -562,7 +392,7 @@ the logger
 </div>
 
     <div id="footer">
-  Generated on Tue Aug  7 19:53:31 2012 by
+  Generated on Sat Aug 18 16:24:07 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

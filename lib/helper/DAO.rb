@@ -21,7 +21,7 @@ class DAO
 	# Config the DAO defining the Data Stream
 	#
 	# @param type [String] type of the Data Stream to choose the correct database
-	def initialize (type)
+	def initialize (type = 'twitter')
 
 		@type = type
 
@@ -39,12 +39,12 @@ class DAO
 		@db = Redis.new
 
 		logger.debug("New instance for Redis")
-		
+
 		@db = Redis.connect(
-			:db   => "#{Logging::config["redis"]["db"]}",
-			:host => "#{Logging::config["redis"]["host"]}",
-			:port => Logging::config["redis"]["port"],
-			:password => Logging::config["redis"]["password"]
+			:db   => "#{Settings.redis.db}",
+			:host => "#{Settings.redis.host}",
+			:port => Settings.redis.port,
+			:password => Settings.redis.password
 		)
 		
 		logger.info("Redis connect OK")
@@ -55,15 +55,23 @@ class DAO
 	# @return [String] the status from the Adapter
 	def get_status 
 		logger.debug("getting status")
-		status = @db.rpop Logging::config["redis"][type]
+		status = @db.rpop @type
 		status
+	end
+
+	# Deletes the keys in the  database to starts the FW empty
+	# @note if the user develops more Streams, add the new keys like the existing ones
+	def clean
+		logger.debug("cleaning the db")
+		@db.del 'twitter'
+		@db.del 'rpg'
 	end
 
 	# Persists the status into the database
 	#
 	# @param status [String] the status to persist it
 	def save_status status
-		@db.rpush Logging::config["redis"][type], status
+		@db.rpush @type, status
 		logger.info("Status saved")
 	end
 
@@ -72,7 +80,7 @@ class DAO
 	# @return [Integer] the size (items) of the database
 	def size
 		logger.debug("getting size")
-		@db.llen Logging::config["redis"][type]
+		@db.llen @type
 	end
 
 	# Publish a message in the websocket server
@@ -81,7 +89,6 @@ class DAO
 	def publish usmf
 		logger.info("Publishing")
 		@db.publish 'ws', usmf
-
 	end
 
 end

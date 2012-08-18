@@ -18,19 +18,38 @@ class KermitPFC
   def initialize
     
     begin
+
+      cleaning_the_house
+      
       puts 'pooling'
+      
       pool = []
       pool << Thread.new { initialize_websocket_server }
+      
       puts 'websocket started'
-      for i in 1..Logging::config["twitter"]["streams"]
 
-        puts 'adding adapters'
+      for i in 1..Logging::Settings.twitter.streams
+
+        puts "adding twitter adapter ##{i}"
         pool << Thread.new { twitter_adapter i }
         sleep 1
+
       end
-      puts 'adapters added'
+
+      puts 'twitter adapters added'
+
+      if Logging::Settings.rpg
       
+        pool << Thread.new { random_adapter }
+        puts 'random adapter added'
+      
+        pool << Thread.new { random_converter }
+        puts 'random converter added'
+      
+      end
+
       pool << Thread.new { twitter_converter }
+      puts 'twitter converter added'
 
       pool.each do |thread|
         thread.join
@@ -38,11 +57,22 @@ class KermitPFC
 
     rescue Exception => e
       
+      Logging::logger.error(e)
+
       pool.each do |thread|
         Thread.kill(thread)
+      
       end
 
     end
+
+  end
+
+  # Deletes the db keys previously used
+  def cleaning_the_house
+
+    dao = DAO.new
+    dao.clean
 
   end
 
@@ -67,7 +97,7 @@ class KermitPFC
   # Starts the Random Adapter
   #
   # @param stream [Integer] the number of the stream
-  def random_adapter stream
+  def random_adapter stream=1
 
     ra = RandomAdapter.new
     ra.connect_stream stream
@@ -106,7 +136,7 @@ class KermitPFC
   # Starts the Random Converter
   def random_converter
 
-    dao = DAO.new 'random'
+    dao = DAO.new 'rpg'
 
     while true
 

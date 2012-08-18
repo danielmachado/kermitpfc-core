@@ -10,7 +10,7 @@ describe DAO do
 		puts 'Testing Twitter DB...'
 		dao.db.should_not == nil
 		puts 'Twitter DB OK'
-		dao = DAO.new 'random'
+		dao = DAO.new 'rpg'
 		puts 'Testing Random DB...'
 		dao.db.should_not == nil
 		puts 'Random DB OK'
@@ -25,7 +25,7 @@ describe DAO do
 		puts 'Testing Twitter status...'
 		dao.get_status.should_not == nil
 		puts 'Twitter status OK'
-		dao = DAO.new 'random'
+		dao = DAO.new 'rpg'
 		puts 'Testing Random phrase...'
 		dao.get_status.should_not == nil
 		puts 'Random phrase OK'  		
@@ -40,7 +40,7 @@ describe DAO do
 		puts 'Testing Twitter DB size...'
 		dao.size.should >= 0
 		puts 'Twitter DB size OK'
-		dao = DAO.new 'random'
+		dao = DAO.new 'rpg'
 		puts 'Testing Random DB size...'
 		dao.size.should >= 0
 		puts 'Random DB size OK'

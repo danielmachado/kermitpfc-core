@@ -14,9 +14,9 @@ class WebSocketClient
 
     EventMachine.run do
 
-      puts '='*80, "Connecting to websockets server at ws://#{Logging::config["websocket"]["host"]}:#{Logging::config["websocket"]["port"]}", '='*80
+      puts '='*80, "Connecting to websockets server at ws://#{Settings.websocket.host}:#{Settings.websocket.port}", '='*80
 
-      http = EventMachine::HttpRequest.new("ws://#{Logging::config["websocket"]["host"]}:#{Logging::config["websocket"]["port"]}/websocket").get :timeout => 0
+      http = EventMachine::HttpRequest.new("ws://#{Settings.websocket.host}:#{Settings.websocket.port}/websocket").get :timeout => 0
 
       http.errback do
         logger.error "something was wrong in the websocket_client"
