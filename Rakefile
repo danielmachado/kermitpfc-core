@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "kermit"
-  gem.homepage = "http://github.com/danielmachado/kermit"
+  gem.homepage = "http://github.com/danielmachado/kermitpfc-core"
   #gem.license = "MIT"
   gem.summary = %Q{Allows to retrieve info from diferent Data Streams}
   gem.description = %Q{Allows to retrieve info from diferent Data Streams for data mining purpouses}
