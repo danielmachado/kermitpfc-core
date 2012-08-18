@@ -1,24 +1,37 @@
 redis:
- db: #Database name where you want to store the statuses
- twitter: #Key under you want to found your tweets
- # you must add keys for your own stream implementations
- host: #address of your Redis-Server 
- port: #port of your Redis-Server
+ #Database name where you want to store the statuses
+ db: kermit 
+ #Key under you want to found your tweets
+ twitter: twitter
+ # [you must add keys for your own stream implementations]
+ #address of your Redis-Server
+ host: 127.0.0.1  
+ #port of your Redis-Server
+ port: 6379
  password: #Redis password
 #Websocket address to publish the statuses
 websocket:
- host: #address of your websocket server
- port: #port of your websocket server
-#for each Stream implementation you must define its specific params.
+ #address of your websocket server
+ host: 0.0.0.0
+ #port of your websocket server
+ port: 8000
+#[for each Stream implementation you must define its specific params.]
 twitter:
- streams:#number of streams you want 
+#number of streams you want
+ streams: 2 
  path: /1/statuses/filter.json
- track: #Keywords you want Twitter tracks and filter the Stream (one for each stream)
-  1: #specific keyword for each twitter stream
-  2: #another keyword to track
- login: #Your Twitter username
- pass: #Your Twitter password
- port: #Port, in case you need to specific one.
-#RandomPhraseGenerator Stream
-rpg: #true / false if you want to enable this stream
-#if you want to add more Social Networks/Streams, it can be a good idea to follow the previous Twitter structure.
+ track: # [Keywords you want Twitter tracks and filter the Stream (one for each stream)]
+  #specific keyword for each twitter stream
+  1: a
+  #another keyword to track
+  2: b
+  #Your Twitter username
+ login: 
+ #Your Twitter password
+ pass: 
+ #Port, in case you need to specific one.
+ port: 443
+#[RandomPhraseGenerator Stream]
+#true / false if you want to enable this stream
+rpg: false
+#[if you want to add more Social Networks/Streams, it can be a good idea to follow the previous Twitter structure.]
