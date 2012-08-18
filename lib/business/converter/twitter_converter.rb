@@ -21,8 +21,6 @@ class TwitterConverter < Converter
     # @return [USMF] the resultant message
 	def to_usmf status
 
-		logger.debug("Starting tweet parse")
-
 		usmf = USMF.new
 		user = User.new
 
@@ -154,8 +152,6 @@ class TwitterConverter < Converter
 			end
 
 		end
-
-		logger.debug("Finished tweet parse")
 
 		usmf
 

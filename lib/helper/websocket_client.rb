@@ -12,6 +12,8 @@ class WebSocketClient
   # Starts the WebSocket client to consume the published info in the WebSocket Server
   def start
 
+    logger.info('Starting the WebSocket Client...')
+
     EventMachine.run do
 
       puts '='*80, "Connecting to websockets server at ws://#{Settings.websocket.host}:#{Settings.websocket.port}", '='*80

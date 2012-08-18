@@ -15,7 +15,6 @@ class RandomAdapter < Adapter
 	def initialize
 		
 		@dao = DAO.new 'rpg'
-		logger.debug('Starting RandomAdapter...')
 
 	end
 
@@ -25,12 +24,13 @@ class RandomAdapter < Adapter
 	# @param stream [Integer] number of the stream
 	def connect_stream (stream=1)
 
+		logger.info('Starting Random adapter')
 		random = RandomPhraseGenerator.new
 		i=0
 		while true
 			
 			persist random.generate
-			logger.debug('retrieving...')
+
 			i = i+1
 			if i%10 == 0
 				sleep 10

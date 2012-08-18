@@ -16,7 +16,6 @@ class TwitterAdapter < Adapter
 	# Configures the dao with the apropiates params
 	def initialize
 
-		logger.info('Starting TwitterAdapter...')
 		@dao = DAO.new 'twitter'
 
 	end
@@ -26,9 +25,10 @@ class TwitterAdapter < Adapter
 	# @param stream [Integer] the number of the stream to identify it (use it when you have got more than one)
 	def connect_stream (stream=1)
 
-		logger.debug('retrieving...')
 		puts 'retrieving... '
 		track = Settings.twitter.track.send("track#{stream}")
+
+		logger.info("Starting Twitter adapter ##{track}")
 
 		EventMachine::run {
 

@@ -19,7 +19,6 @@ class RandomConverter < Converter
       # @return [USMF] the resultant message
       def to_usmf status
 
-            logger.debug("Start the random parse")
 		usmf = USMF.new
 		user = User.new
 
@@ -34,7 +33,7 @@ class RandomConverter < Converter
 
       	usmf.links = []
       	usmf.to_users = []
-            logger.debug("Finish the random parse")
+            
 		usmf
 		
 	end
