@@ -8,7 +8,7 @@ It also allows different streams serve under a common way to treat data as a sin
 
 ## Intro
 
-kermitpfc-core is based on a series of classes to be used to ensure proper functionality of the social network you want to implement, these classes are Adapter to collect social network statuses, Converter to parse the previous statuses in the USMF model (with their respective classes). To facilitate the publish action of USMF, JSON service is used with the help of the Redis Pub / Sub module (which implements the core, Redis must be installed in server mode).
+Kermitpfc-core is based on a series of classes to be used to ensure proper functionality of the social network you want to implement, these classes are Adapter to collect social network statuses, Converter to parse the previous statuses in the USMF model (with their respective classes). To facilitate the publish action of USMF, JSON service is used with the help of the Redis Pub / Sub module (which implements the core, Redis must be installed in server mode).
 
 
 ## How to use

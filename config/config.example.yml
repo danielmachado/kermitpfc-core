@@ -22,9 +22,9 @@ twitter:
  path: /1/statuses/filter.json
  track: # [Keywords you want Twitter tracks and filter the Stream (one for each stream)]
   #specific keyword for each twitter stream
-  1: a
+  track1: a
   #another keyword to track
-  2: b
+  track2: b
   #Your Twitter username
  login: 
  #Your Twitter password

@@ -50,18 +50,6 @@ class USMF
       			"min_rating" => min_rating,
       			"max_rating" => max_rating
   		    }
-    begin
-    
-      unless :user == nil
-        res["user"] = user.to_hash
-      end
-    
-    rescue
-    
-      res["user"] = nil
-      logger.error("A corrupt user was found")
-    
-    end
 
       l = []
     
@@ -90,6 +78,19 @@ class USMF
         res["to_users"] = tu
     
       end      
+
+      begin
+    
+        unless :user == nil
+         res["user"] = user.to_hash
+        end
+    
+      rescue
+    
+        #Sometimes a corrupt user was found
+        res = nil
+    
+      end
 
   	res
 

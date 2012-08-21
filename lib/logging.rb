@@ -21,11 +21,7 @@ module Logging
   # solve the problem with path controversia in the log file
   # @return [Logger] the logger with the correct path of log.txt
   def self.logger 
-    begin
-	   @logger ||= Logger.new('../log/log.txt','monthly')
-    rescue
-      @logger ||= Logger.new('./log/log.txt','monthly')
-    end
+	   @logger ||= Logger.new('log.txt','monthly')
   end
   
 end
