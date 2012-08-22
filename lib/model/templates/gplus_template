@@ -1,0 +1,49 @@
+{
+    "service" : "Google+",           # Service Name.
+    "user" : {                # User Info 
+        "name" : "actor.displayName",              # User Name
+        "real_name" : "actor.givenName+actor.familyName"          # Real name of user
+        "id" : "actor.id",                # Unique User ID
+        "language": "actor.languagesSpoken[]",           # Spoken language of user
+        "utc" : "nil",               # UTC time offset of user
+        "geo" : "actor.placesLived[]",               # Latitude/Logitude User location
+        "description" : "actor.aboutMe"        # User profile description
+        "avatar" : "actor.image",            # Direct href to avatar image
+        "location": "actor.currentLocation",           # Plain Language User location
+        "subscribers": "nil",        # Number of subscribers
+        "subscriptions": "nil",      # Number of subscriptions
+        "postings": "nil",           # Number of postings made
+        "profile": "actor.url",            # Href to user profile
+        "website": "actor.urls[]",            # Href to user website
+    }
+    "to_users" {              # Attached link(s) // // Tantos como UserMentions tenga entities 0...N
+       "0": {                     # Index of link
+          "name" : "object.actor.displayName",                # User Name
+          "id" : "object.actor.id",                  # Unique User ID
+          "verb"                   # Name of service/Domain hosting link 
+          "title" : "object.actor.title",               # Title of item
+          "thumbnail" : "object.actor.image.url",           # Direct href to thumbnail for item
+          "href" : "object.actor.url",                # Direct href to item
+       },
+    },       
+    "links" {                 # Attached link(s) //Media del status
+       "0": {                     # Index of link // Tantos como entities se necesiten 0...N
+          "object.attachments[].displayName"                   # Name of service/Domain hosting link 
+          "photo/video/url.." : "object.attachments[].objectType",               # Title of item
+          "thumbnail" : "object.attachments[].image.url",           # Direct href to thumbnail for item
+          "href" : "object.attachments[].url",                # Direct href to item
+       },
+    },       
+    "id" : "id",                # Unique ID
+    "geo" : "geocode",               # Latitude/Logitude content creation location
+    "application" : "provider",       # Application used to create this posting
+    "location" : "address+placeName",          # Plain Language content creation location
+    "date" : "published",              # Date posted
+    "source" : "id (From GET)",            # User friendly link to content
+    "text" : "object.content",              # Microblog text / Video Title / Etc
+    "description" : "annotation",       # Full post text / Decription 
+    "keywords" : "etag",          # Related Keywords
+    "likes" : "object.resharers.totalItems",             # Number of users who "liked" this
+    "dislikes" : "nil",          # Number of users who "disliked" this
+    "favorites": "object.plusoners.totalItems",          # Number of users who "favorited" this
+}
