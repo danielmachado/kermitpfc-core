@@ -313,15 +313,13 @@ the resultant message
 36
 37
 38
-39
-40</pre>
+39</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/business/converter/random_converter.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_usmf'>to_usmf</span> <span class='id identifier rubyid_status'>status</span>
 
-           <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Start the random parse</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_usmf'>usmf</span> <span class='op'>=</span> <span class='const'>USMF</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 	<span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
@@ -336,7 +334,7 @@ the resultant message
 
      	<span class='id identifier rubyid_usmf'>usmf</span><span class='period'>.</span><span class='id identifier rubyid_links'>links</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
      	<span class='id identifier rubyid_usmf'>usmf</span><span class='period'>.</span><span class='id identifier rubyid_to_users'>to_users</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-           <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Finish the random parse</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+           
 	<span class='id identifier rubyid_usmf'>usmf</span>
 	
 <span class='kw'>end</span></pre>
@@ -350,7 +348,7 @@ the resultant message
 </div>
 
     <div id="footer">
-  Generated on Sat Aug 18 16:24:08 2012 by
+  Generated on Wed Aug 22 19:28:37 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

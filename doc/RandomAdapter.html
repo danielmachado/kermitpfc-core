@@ -308,8 +308,7 @@ Initializes the Random Adapter class with the dao parameters
 16
 17
 18
-19
-20</pre>
+19</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/business/adapter/random_adapter.rb', line 15</span>
@@ -317,7 +316,6 @@ Initializes the Random Adapter class with the dao parameters
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
 	
 	<span class='ivar'>@dao</span> <span class='op'>=</span> <span class='const'>DAO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rpg</span><span class='tstring_end'>'</span></span>
-	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting RandomAdapter...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
 <span class='kw'>end</span></pre>
     </td>
@@ -382,6 +380,7 @@ number of the stream
       <pre class="lines">
 
 
+25
 26
 27
 28
@@ -400,16 +399,17 @@ number of the stream
 41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/business/adapter/random_adapter.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/business/adapter/random_adapter.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect_stream'>connect_stream</span> <span class='lparen'>(</span><span class='id identifier rubyid_stream'>stream</span><span class='op'>=</span><span class='int'>1</span><span class='rparen'>)</span>
 
+	<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Starting Random adapter</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_random'>random</span> <span class='op'>=</span> <span class='const'>RandomPhraseGenerator</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 	<span class='id identifier rubyid_i'>i</span><span class='op'>=</span><span class='int'>0</span>
 	<span class='kw'>while</span> <span class='kw'>true</span>
 		
 		<span class='id identifier rubyid_persist'>persist</span> <span class='id identifier rubyid_random'>random</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span>
-		<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>retrieving...</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
 		<span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>1</span>
 		<span class='kw'>if</span> <span class='id identifier rubyid_i'>i</span><span class='op'>%</span><span class='int'>10</span> <span class='op'>==</span> <span class='int'>0</span>
 			<span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>10</span>
@@ -492,7 +492,7 @@ the status to persist
 </div>
 
     <div id="footer">
-  Generated on Sat Aug 18 16:24:08 2012 by
+  Generated on Wed Aug 22 19:28:37 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

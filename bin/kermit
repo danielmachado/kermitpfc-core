@@ -13,12 +13,13 @@ program :help, 'Author', 'Daniel Machado Fernandez'
 default_command :start
 
 command :start do |c|
-  c.syntax = 'kermit start [options]'
+  c.syntax = 'kermit start'
   c.description = 'Start the websocket server which is the responsable to distribute the USMFs to the data miners, retrieve new statuses from the Streams, converts it in USMF and publish it on the websocket.'
-  c.option '--path STRING', String, 'path of the config.yml file'
+  c.example 'starts kermit with config.yml file in the current folder', 'kermit config.yml'
+  c.example 'starts kermit with config.yml file in /config/config.yml path', 'kermit ./config/config.yml'
   c.action do |args, options|
-  	 options.default :path => '../config/config.yml'
-  	 Logging::Settings.source options.path
+  	 path = args.first || ask("path: ")
+  	 Logging::Settings.source path
      Logging::KermitPFC.new
   end
 end

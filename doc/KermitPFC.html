@@ -428,7 +428,15 @@ Load the config file
 66
 67
 68
-69</pre>
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 18</span>
@@ -440,48 +448,56 @@ Load the config file
     <span class='id identifier rubyid_cleaning_the_house'>cleaning_the_house</span>
     
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pooling</span><span class='tstring_end'>'</span></span>
-    
+    <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Pooling</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_pool'>pool</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_initialize_websocket_server'>initialize_websocket_server</span> <span class='rbrace'>}</span>
     
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>websocket started</span><span class='tstring_end'>'</span></span>
+    <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>WebSocket started</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
     <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>1</span><span class='op'>..</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>Settings</span><span class='period'>.</span><span class='id identifier rubyid_twitter'>twitter</span><span class='period'>.</span><span class='id identifier rubyid_streams'>streams</span>
 
       <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adding twitter adapter #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>adding twitter adapter #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
       <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_twitter_adapter'>twitter_adapter</span> <span class='id identifier rubyid_i'>i</span> <span class='rbrace'>}</span>
       <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>1</span>
 
     <span class='kw'>end</span>
 
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter adapters added</span><span class='tstring_end'>'</span></span>
+    <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter adapters added</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
     <span class='kw'>if</span> <span class='const'>Logging</span><span class='op'>::</span><span class='const'>Settings</span><span class='period'>.</span><span class='id identifier rubyid_rpg'>rpg</span>
     
       <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_random_adapter'>random_adapter</span> <span class='rbrace'>}</span>
       <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>random adapter added</span><span class='tstring_end'>'</span></span>
+      <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>random adapter added</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
     
       <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_random_converter'>random_converter</span> <span class='rbrace'>}</span>
       <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>random converter added</span><span class='tstring_end'>'</span></span>
+      <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>random converter added</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
     
     <span class='kw'>end</span>
 
     <span class='id identifier rubyid_pool'>pool</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_twitter_converter'>twitter_converter</span> <span class='rbrace'>}</span>
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter converter added</span><span class='tstring_end'>'</span></span>
-
-    <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_thread'>thread</span><span class='op'>|</span>
-      <span class='id identifier rubyid_thread'>thread</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+    <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter converter added</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+      
+     <span class='kw'>if</span> <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>!=</span> <span class='const'>NilClass</span> 
+      <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_thread'>thread</span><span class='op'>|</span>
+        <span class='id identifier rubyid_thread'>thread</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
-
   <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
     
     <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
-
-    <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_thread'>thread</span><span class='op'>|</span>
-      <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='id identifier rubyid_thread'>thread</span><span class='rparen'>)</span>
-    
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>!=</span> <span class='const'>NilClass</span>
+      <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_thread'>thread</span><span class='op'>|</span>
+        <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='id identifier rubyid_thread'>thread</span><span class='rparen'>)</span>     
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
-
   <span class='kw'>end</span>
 
 <span class='kw'>end</span></pre>
@@ -524,15 +540,15 @@ Deletes the db keys previously used
       <pre class="lines">
 
 
-72
-73
-74
-75
-76
-77</pre>
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cleaning_the_house'>cleaning_the_house</span>
 
@@ -572,15 +588,15 @@ Starts the WebSocket Server
       <pre class="lines">
 
 
-80
-81
-82
-83
-84
-85</pre>
+88
+89
+90
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize_websocket_server'>initialize_websocket_server</span>
 
@@ -643,15 +659,15 @@ the number of the stream
       <pre class="lines">
 
 
-100
-101
-102
-103
-104
-105</pre>
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_random_adapter'>random_adapter</span> <span class='id identifier rubyid_stream'>stream</span><span class='op'>=</span><span class='int'>1</span>
 
@@ -691,21 +707,6 @@ Starts the Random Converter
       <pre class="lines">
 
 
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
 152
 153
 154
@@ -717,10 +718,25 @@ Starts the Random Converter
 160
 161
 162
-163</pre>
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_random_converter'>random_converter</span>
 
@@ -802,15 +818,15 @@ the number of the stream
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95</pre>
+98
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_twitter_adapter'>twitter_adapter</span> <span class='id identifier rubyid_stream'>stream</span>
 
@@ -850,14 +866,6 @@ Starts the Twitter Converter
       <pre class="lines">
 
 
-108
-109
-110
-111
-112
-113
-114
-115
 116
 117
 118
@@ -876,31 +884,53 @@ Starts the Twitter Converter
 131
 132
 133
-134</pre>
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/kermitpfc.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_twitter_converter'>twitter_converter</span>
 
   <span class='id identifier rubyid_dao'>dao</span> <span class='op'>=</span> <span class='const'>DAO</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter</span><span class='tstring_end'>'</span></span>
-
+  <span class='id identifier rubyid_z'>z</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='kw'>while</span> <span class='kw'>true</span>
 
+    <span class='const'>Logging</span><span class='op'>::</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TWEETS: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
     <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_get_status'>get_status</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Status retrieved</span><span class='tstring_end'>'</span></span>
 
     <span class='kw'>while</span> <span class='id identifier rubyid_status'>status</span> <span class='op'>!=</span> <span class='kw'>nil</span>
-
+      
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Status retrieved</span><span class='tstring_end'>'</span></span>
       <span class='id identifier rubyid_tc'>tc</span> <span class='op'>=</span> <span class='const'>TwitterConverter</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
       <span class='id identifier rubyid_usmf'>usmf</span> <span class='op'>=</span> <span class='id identifier rubyid_tc'>tc</span><span class='period'>.</span><span class='id identifier rubyid_to_usmf'>to_usmf</span> <span class='id identifier rubyid_status'>status</span>
-
-      <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='id identifier rubyid_usmf'>usmf</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Published</span><span class='tstring_end'>'</span></span>
-
+      <span class='id identifier rubyid_json'>json</span> <span class='op'>=</span> <span class='id identifier rubyid_usmf'>usmf</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+      
+      <span class='kw'>if</span> <span class='id identifier rubyid_json'>json</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>null</span><span class='tstring_end'>'</span></span>
+        <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='id identifier rubyid_json'>json</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Published</span><span class='tstring_end'>'</span></span>
+        <span class='id identifier rubyid_z'>z</span> <span class='op'>=</span> <span class='id identifier rubyid_z'>z</span> <span class='op'>+</span> <span class='int'>1</span>
+      <span class='kw'>end</span>
+      
       <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='id identifier rubyid_dao'>dao</span><span class='period'>.</span><span class='id identifier rubyid_get_status'>get_status</span>
 
     <span class='kw'>end</span>
+
 
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>All the statuses were been sent</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>2</span>
@@ -918,7 +948,7 @@ Starts the Twitter Converter
 </div>
 
     <div id="footer">
-  Generated on Sat Aug 18 16:24:07 2012 by
+  Generated on Wed Aug 22 19:28:36 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

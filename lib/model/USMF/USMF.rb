@@ -78,24 +78,10 @@ class USMF
         res["to_users"] = tu
     
       end
-      begin
-    
-      	unless :user == nil
-      	  res["user"] = user.to_hash
-      	end
-    
-      rescue
-    
-     	 res["user"] = nil
-      	 #Sometimes a corrupt user was found
-    	 
-    	 res = nil
-    	
-      end
 
       begin
     
-        unless :user == nil
+        if :user != nil
          res["user"] = user.to_hash
         end
     

@@ -22,48 +22,56 @@ class KermitPFC
       cleaning_the_house
       
       puts 'pooling'
-      
+      Logging::logger.info('Pooling')
       pool = []
       pool << Thread.new { initialize_websocket_server }
       
       puts 'websocket started'
+      Logging::logger.info('WebSocket started')
 
       for i in 1..Logging::Settings.twitter.streams
 
         puts "adding twitter adapter ##{i}"
+        Logging::logger.info("adding twitter adapter ##{i}")
+
         pool << Thread.new { twitter_adapter i }
         sleep 1
 
       end
 
       puts 'twitter adapters added'
+      Logging::logger.info('twitter adapters added')
 
       if Logging::Settings.rpg
       
         pool << Thread.new { random_adapter }
         puts 'random adapter added'
+        Logging::logger.info('random adapter added')
       
         pool << Thread.new { random_converter }
         puts 'random converter added'
+        Logging::logger.info('random converter added')
       
       end
 
       pool << Thread.new { twitter_converter }
       puts 'twitter converter added'
-
-      pool.each do |thread|
-        thread.join
+      Logging::logger.info('twitter converter added')
+        
+       if pool.class != NilClass 
+        pool.each do |thread|
+          thread.join
+        end
       end
-
     rescue Exception => e
       
       Logging::logger.error(e)
-
-      pool.each do |thread|
-        Thread.kill(thread)
-      
+      puts e
+      if pool.class != NilClass
+        pool.each do |thread|
+          Thread.kill(thread)     
+        end
       end
-
     end
 
   end
@@ -108,23 +116,30 @@ class KermitPFC
   def twitter_converter
 
     dao = DAO.new 'twitter'
-
+    z = 0
     while true
 
+      Logging::logger.info "TWEETS: #{z}"
+
       status = dao.get_status
-      puts 'Status retrieved'
 
       while status != nil
-
+        
+        puts 'Status retrieved'
         tc = TwitterConverter.new
         usmf = tc.to_usmf status
-
-        dao.publish usmf.to_hash.to_json
-        puts 'Published'
-
+        json = usmf.to_hash.to_json
+        
+        if json != 'null'
+          dao.publish json
+          puts 'Published'
+          z = z + 1
+        end
+        
         status = dao.get_status
 
       end
+
 
       puts 'All the statuses were been sent'
       sleep 2

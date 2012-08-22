@@ -39,16 +39,17 @@ $ gem install kermit
 and execute it
 
 ```bash
-$ kermit --path [config.yml_path]
+$ kermit [config.yml_path]
 ```
 p.ex
 
 ```bash
-$ kermit --path ../config/config.yml
+$ kermit ../config/config.yml
 ```
 
 or
 
 ```bash
-$ kermit --path config.yml
+$ kermit
+path: config.yml
 ```
