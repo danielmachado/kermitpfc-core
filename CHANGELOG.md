@@ -1,11 +1,11 @@
 ## 1.0.4 (Aug 22, 2012)
 
 Bugfixes:
+
 	- solved some errors that appears when the path of the config.yml file was introduced wrong
 	- solved the null messages that was sent when the user was malformed
 	- removed the --path option, now the path is inyected as an arg and in case that not explicited, it will be asked by the app
 	- added some logger messages to info the number of tweets have been parsed (50 tweets/sec aprox.)
-	- 
 
 ## 1.0.3 (Aug 21, 2012)
 
